@@ -1,0 +1,713 @@
+
+
+## array operations
+
+#### find out the students having hobbies 
+(find the students where the hobbies is an array )
+
+# find the students with hobbies as an array
+# $type will check if the data type of collection matches with required type
+>db.students.find({hobbies:{$type:'array'}})😇️
+
+
+# find the student who are having hobbies length = 2  =$size
+>db.students.find({hobbies:{$size:2}},{name:1,hobbies:1,_id:0}).pretty()
+
+
+
+
+
+
+
+
+
+//https://www.mongodb.com/docs/v5.0/reference/operator/query/elemMatch/
+#### find out the students who has the 
+programming as one of the hobbies --->$elemMatch
+>db.students.find({
+  hobbies:{
+    $elemMatch:{ $eq:"Programming" }😇️
+  }
+},{
+  name:1,
+  _id:0
+})
+
+
+
+#### find all student who passed 12th 
+standard in year 2006 
+$elemMatch  , $and
+>db.students.find({
+  academics:{
+    $elemMatch:{ 
+        $and:[
+          { std : '12th'},
+          { passing : 2006}
+        ]
+     }
+  }
+},{
+  name:1,
+  _id:0
+})
+
+
+
+
+#### find all the students having score 
+less than 80% in 10th exam
+>db.students.find({
+  academics:{
+    $elemMatch:{ 
+        $and:[
+          { std : '10th'},
+          { marks : { $lt : 80 } }
+        ]
+     }
+  }
+},{
+  name:1,
+  _id:0
+})
+
+
+
+=============================================
+
+
+
+
+#### find all the students having hobby as Sports 
+and Music
+
+> db.students.find({
+  $and:[
+    { hobbies: { $elemMatch :{ $eq:"Sports" }}},
+    { hobbies: { $elemMatch :{ $eq:"Music"  }}}
+  ]
+},{
+  name:1,
+  _id:0
+})
+
+
+
+###($and -> $all)😇️
+
+using $all
+> db.students.find({
+  hobbies:{ $all :["Sports","Music"]}
+},{
+  name:1,
+  _id:0
+})
+
+###($or -> $in)😇️
+
+
+
+#### find all the students who like to Teach 
+or listen to Music
+
+db.students.find({
+    $or:[
+        {hobbies: {$elemMatch:{$eq:"Teaching"}}},
+        {hobbies: {$elemMatch:{$eq:"Music"}}}
+    ]
+})
+
+
+using $in
+> db.students.find({
+    hobbies:{ $in: ["Teaching","Music"] }
+},{
+  name:1,
+  _id:0
+})
+
+
+
+
+
+
+#### find all students who do not like programming
+
+$nin
+
+>db.students.find({
+    hobbies:{ $nin: ["Programming"] }
+},{
+  name:1,
+  _id:0
+})
+
+
+
+
+
+
+#### display the students for whom Music is the 1th hobby
+>db.students.find({
+    'hobbies.0':{ $eq:"Music" } 😇️
+},{
+  name:1,
+  _id:0
+})
+
+
+#### display the students for whom Sports is the 2nd hobby
+>db.students.find({
+    'hobbies.1':{ $eq:"Sports" } 😇️
+},{
+  name:1,
+  _id:0
+})
+
+
+-->### display a students information
+
+# returns a single document
+> db.students.findOne({_id:3})😇️
+================================================
+Array Update Operators
+
+db.students.find();
+
+###update Sachin hobbies list and 
+add Cooking  $push😇️
+
+>db.students.update({
+    name:"Sachin"
+  },{
+    $push:{hobbies:"Cooking"}
+  })
+db.students.findOne({name:'Sachin'});
+
+###update Sachin hobbies list and add Singing
+>db.students.update({
+    name:"Sachin"
+  },{
+    $push:{hobbies:"Singing"}
+  })
+
+db.students.findOne({name:'Sachin'});
+
+### update Sachin hobbies list
+ by adding Programming (allow duplicate)😇️
+>db.students.update({
+    name:"Sachin"
+  },{
+    $push:{hobbies:"Programming"}
+  })
+db.students.findOne({name:'Sachin'});
+
+
+### update Sachin hobbies list by adding Singing 
+using $addToSet-->(not allow duplicate)😇️
+>db.students.update({
+    name:"Sachin"
+  },{
+    $addToSet:{hobbies:"Singing"}😇️
+  })
+
+### update Sachin hobbies list by adding Reading
+>db.students.update({
+    name:"Sachin"
+  },{
+    $addToSet:{hobbies:"Reading"}
+  })
+
+db.students.findOne({name:'Sachin'});
+
+
+
+### update Sachin hobbies list by 
+removing Programming  using   $pull
+
+>db.students.update({
+    name:"Sachin"
+  },{
+    $pull:{hobbies:"Programming"}😇️
+  })
+db.students.findOne({name:'Sachin'});
+
+
+
+
+### update Sachin hobbies add each hobbies 
+from the array [ 'Programming', 'Swimming', 'Music', 'Sports' ] 
+without duplicating it
+ $addToSet   $each 😇️
+
+>db.students.update({
+    name:"Sachin"
+  },{
+    $addToSet:{
+      hobbies:{
+        $each:['Programming', 'Swimming', 'Music', 'Sports']
+      }
+    }
+  })
+
+db.students.findOne({name:'Sachin'});
+
+
+### update Sachin hobbies add 
+Drawing at 4th position  $position
+>db.students.update({
+    name:"Sachin"
+  },{
+    $push:{
+      hobbies:{
+        $each:['Drawing'],
+        $position:3😇️
+      }
+    }
+  })
+
+
+db.students.findOne({name:'Sachin'});
+#### update Sachin hobbies 
+add Painting and sort hobbies.  $sort
+
+>db.students.update({
+    name:"Sachin"
+  },{
+    $push:{
+      hobbies:{
+        $each:['Painting'],
+        $sort:1
+      }
+    }
+  })
+
+db.students.findOne({name:'Sachin'});
+
+
+
+
+
+
+#### update Sachin hobbies  
+and sort hobbies without adding .
+
+>
+db.students.update({
+    name:"Sachin"
+  },{
+    $push:{
+      hobbies:{
+        $each:[],
+        $sort:1
+      }
+    }
+  })
+db.students.find();
+
+
+####update Sachin hobbies--> 
+keep only first 3 and remove all other . $slice:3😇️
+
+>db.students.update({
+    name:"Sachin"
+  },{
+    $push:{
+      hobbies:{
+        $each:[],
+        $slice:3
+      }
+    }
+  })
+db.students.find();
+
+db.students.find();
+
+
+
+####update Sachin hobbies--> add 2['Programming', 'Cooking']
+ in sorted order and keep only last 3 and remove all other .😇️
+>db.students.update({
+    name:"Sachin"
+  },{
+    $push:{
+      hobbies:{
+        $each:['Programming', 'Cooking'],
+        $sort:1,
+        $slice:-3
+      }
+    }
+  })
+
+db.students.find();
+
+=================================================
+======================================================
+## aggregation pipeline
+
+- https://www.mongodb.com/docs/manual/reference/operator/aggregation/
+- collection of stages
+- operators
+  - $sort
+  - $limit
+  - $match
+  - $addFields
+  - $project
+ 
+#### sort the employee records 
+on the salary field
+
+# without pipeline
+> db.emp.find().sort({sal: 1})
+
+# with pipeline
+# stage1: for sorting the documents 
+by sal //ASC
+>db.emp.aggregate([
+  {
+    $sort:{sal:1}
+  }
+])
+
+
+
+#### sort the employee records by 
+deptno and job
+
+# without pipeline
+db.emp.find({}).sort({deptno: 1, job: 1})
+
+# with pipeline
+>db.emp.aggregate([
+  {
+    $sort : { deptno:1 , job: 1}
+  }
+])
+
+
+
+
+#### print only ename, sal of every employee
+stage1: print the documents 
+
+# without pipeline😇️
+db.emp.find({}, {ename: 1, sal: 1, _id: 0})
+
+# with pipelind😇️
+>db.emp.aggregate([
+  {
+    $project:{ename: 1, sal: 1, _id: 0}
+  }
+])
+
+
+#### print only ename, 
+sal of every employee sorted by salary
+
+# without pipeline
+db.emp.find({}, {ename: 1, sal: 1}).sort({sal: 1})
+
+# with pipeline
+>db.emp.aggregate([
+  {
+    $sort:{ sal:1 }
+  },
+  {
+    $project: {ename: 1, sal: 1, _id: 0}
+  }
+])
+
+
+#### find out the highest 
+paid employee
+
+# without pipeline
+db.emp.
+    find({}, {ename: 1, sal: 1, _id: 0}).
+    sort({sal: -1}).
+    limit(1)
+
+# with pipeline
+>db.emp.aggregate([
+  {
+      $sort : { sal:-1}
+  },
+  {
+      $limit : 1
+  },
+  {
+     $project: {ename: 1, sal: 1, _id: 0}
+  }
+])
+
+
+#### add a new field
+# adding a new field to every 
+object the stage  -->count=1
+>db.emp.aggregate([
+  {
+    $addFields: {count:1}
+  },
+  {
+    $project:{ename:1, count:1,_id:0}
+  }
+])
+
+### find all the employees along 
+with their commissions and calculate total salary
+
+
+# stage1: add a commission in all the fields with
+#         - zero if the comm does not exist or comm is null
+#         - commission if it is present in the document
+# stage2: calculate total salary => sal + commission
+# stage3: project the result with total salary
+
+# commission:  { $ifNull: ['$comm', 0] }
+
+
+
+# - add new field named commission with value either set from the existing field comm or with value 0
+>db.emp.aggregate([
+  {
+    $addFields:{
+      commission:{ $ifNull:['$comm', 0 ] }
+    }
+  },
+  {
+    $addFields:{
+      totalSalary : 
+      {    $add:['$sal','$commission']   }
+    }
+  },
+  {
+    $project:{ ename:1, commission:1, totalSalary:1, _id:0 }
+  }
+])
+
+
+
+#### find all the employees working in department no 20
+# without pipeline  using ==> 
+db.emp.find({ deptno: 20 }, {ename: 1, deptno: 1})
+
+# with pipeline   $match
+>db.emp.aggregate([
+  {
+    $match:{ deptno : 20 }
+  },
+  {
+    $project : { ename :1 , deptno:1, _id:0 }
+  }
+])
+
+### display all managers in 
+department 30
+
+# without pipeline
+db.emp.find({ job: 'MANAGER', deptno: 30 }, { ename: 1, job: 1, deptno: 1, _id: 0 })
+
+# with pipeline
+>db.emp.aggregate([
+  {
+      $match : { job:'MANAGER' ,deptno: 30 }
+  },
+  {
+      $project: { ename: 1, job: 1, deptno: 1, _id: 0 } 
+  }
+])
+
+
+
+### operators
+
+- $group
+- $lookup
+- $out
+
+### display the records grouped by deptno
+$group
+>db.emp.aggregate([
+  {
+    $group: { _id : '$deptno'}
+  }
+])
+
+
+# first group the records by deptno 
+and then get the sum of salaries
+# _id in the $group operator specifies 
+the group by clause
+
+
+### display the sum of salaries 
+
+>
+db.emp.aggregate([
+  {
+    $group:
+    {
+      _id: '$deptno',
+      sumOfSal : {$sum:'$sal'}
+    }
+  }
+])
+
+
+
+### display the sum, average($avg), maximum($max) and minimum($min) 
+of salaries per department
+
+>db.emp.aggregate([
+  {
+    $group:
+    {
+      _id: '$deptno',
+      sumOfSal : {$sum:'$sal'},
+      avgOfSal : {$avg:'$sal'},
+      maxOfSal : {$max:'$sal'},
+      minOfSal : {$min:'$sal'},
+      count : {$sum : 1 } 
+    }
+  }
+])
+
+
+
+### display the sum, average, maximum and minimum,count of 
+salaries per job
+
+>db.emp.aggregate([
+  {
+    $group:
+    {
+      _id: '$job',
+      sumOfSal : {$sum:'$sal'},
+      avgOfSal : {$avg:'$sal'},
+      maxOfSal : {$max:'$sal'},
+      minOfSal : {$min:'$sal'},
+      count : {$sum : 1 } 
+    }
+  }
+])
+
+
+
+### display the employee and department associated 
+with every employee
+
+# select e.ename, d.dname from emp e
+# left join dept d ON e.deptno = d._id
+
+
+
+
+
+
+
+
+emp => local collection  => deptno
+dept => foreign collection => _id
+
+# format😇️
+# from: the collection to join => dept
+# localField: name of the field in the current collection =>deptno
+# foreignField: name of the corresponding field from the 
+foreign collection => _id
+# as: name of the field where the data will be added to the result
+=> department
+>db.emp.aggregate([
+  {
+    $lookup:
+    {
+      from : 'dept',
+      localField : 'deptno',
+      foreignField : '_id',
+      as :'department'
+    }
+  },
+  {
+    $project:{ ename:1,'department.dname':1,_id:0}
+  }
+])
+
+
+
+
+
+
+
+
+
+
+
+### display the department info and the 
+list of employees working in the department
+# format
+# from: the collection to join
+# localField: name of the field in the current collection
+# foreignField: name of the corresponding field from the foreign collection
+# as: name of the field where the data will be added to the result
+
+dept => local collection  => _id
+emp => foreign collection => deptno
+
+
+### display the department name and all employee  
+associated with department
+>
+db.dept.aggregate([
+  {
+    $lookup:
+    {
+      from : 'emp',
+      localField : '_id',
+      foreignField : 'deptno',
+      as :'employees'
+    }
+  },
+  {
+    $project:{ dname:1,'employees.ename':1,_id:0}
+  }
+]).pretty();
+
+
+
+
+
+
+
+
+
+
+
+
+### store the aggregation result as a 
+new collection
+
+>db.dept.aggregate([
+  {
+    $lookup:
+    {
+      from : 'emp',
+      localField : '_id',
+      foreignField : 'deptno',
+      as :'employees'
+    }
+  },
+  {
+    $out:'newDept'😇️
+  }
+])
+
+
+
+
+show collections
+
+
+
+# out will create a new collection named newCollection😇️
+
+
+-=============================================

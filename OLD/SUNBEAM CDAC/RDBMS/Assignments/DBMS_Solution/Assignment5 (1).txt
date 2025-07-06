@@ -1,0 +1,85 @@
+A
+
+-- 1. Display first name and last name after converting the first letter of each name to upper case and the rest to lower case.
+select concat(upper(left(first_name,1)),lower(substring(first_name,2))), concat(upper(left(last_name,1)),lower(substring(last_name,2))) from employees;
+
+
+---2.  Display the first word in job title.
+select left(job_title,1) from jobs;
+
+---3. Display the length of first name for employees where last name contain character ‘b’ after 3rd position.
+select length(first_name) from employees where last_name like '___b%';
+
+--4. Display first name in upper case and email address in lower case for employees where the first name and email address are same irrespective of the case.
+ select upper(first_name),lower(email) from employees where lower(first_name) = lower(email);
+ 
+--5. Display first name, salary, and round the salary to thousands.
+  select first_name,round(salary) from employees;
+  
+--6. Display employee ID and the date on which he ended his previous job
+  select employee_id,end_date from job_history;
+  
+ --7. Display first name and date of first salary of the employees.(Consider 1st day of month as salary day) HINT: LAST_DAY.
+ select first_name , hire_date,Date_add(hire_date,INTERVAL 1 MONTH) as first_salary_date from employees;   
+ 
+ --8. Display first name and experience of the employees.
+select first_name , timestampdiff(year,hire_date,now()) as experience from employees;
+
+--9.  Display first name of employees who joined in 2001 
+select first_name from employees where year(hire_date)=2001;
+
+--10. . Display employees who joined in the current year.
+select * from employees where year(hire_date) = year(now());
+
+--11. Display the number of days between system date and 1st January 2011.
+select DATEDIFF(date(sysdate()),'2011-01-01');
+
+
+--12.Display number of employees joined after 15th of the month.
+ select count(first_name) from employees where day(hire_date) > 15;
+ 
+ --13.Display third highest salary of employees
+ select distinct salary from employees order by salary desc limit 2,1;
+ 
+ 
+ 
+ B
+ 
+ 1.Display all the Suppliers, belonging to cities starting with the letter ‘L’.
+ 
+ SELECT * FROM S where LEFT(city,1)='L';
+ 
+ 2.Display all the Jobs, with the third letter in JNAME as ‘n
+ SELECT * FROM J WHERE JNAME LIKE "__n%";
+ 
+ 3.Display all the Supplier names with the initial letter capital
+ SELECT CONCAT(UPPER(left(Sname,1)),LOWER(SUBSTRING(Sname,2)) FROM S ;
+ 
+ 
+ 4.Display all the Supplier names in upper case.
+ SELECT UPPER(Sname) FROM S ;
+ 
+ 5.Display all the Supplier names in lower case.
+ SELECT LOWER(Sname) FROM S ;
+ 
+ 6.Display the Supplier names and the lengths of the names.
+ SELECT Sname,Length(Sname) FROM S ;
+ 
+ 7.Display the current day (e.g. Thursday) 
+ SELECT DAYNAME(NOW());
+ 
+ 8.Display the minimum Status in the Supplier table.
+ SELECT MIN(status) FROM S;
+ 
+ 9. Display the maximum Weight in the Parts table.
+ SELECT MAX(weight) FROM P;
+ 
+ 10. Display the average Weight of the Parts.
+ SELECT AVG(weight) FROM P;
+ 
+ 11. Display the total Quantity sold for part ‘P1’.
+ SELECT SUM(QTY) FROM SP WHERE `P#`='P1';
+ 
+ 12.Display all the Supplier names (with ‘la’ replaced by ‘ro’).
+HINT: REPLACE.
+ SELECT Replace(Sname,'la','ro') FROM S;

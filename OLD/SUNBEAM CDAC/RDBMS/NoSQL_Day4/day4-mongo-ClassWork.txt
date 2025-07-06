@@ -1,0 +1,634 @@
+mongoimport
+Performance
+Mongo Indexes
+    Regular index
+    Composite index
+    Unique index
+    TTL index 
+    GeoSpatial Index
+Capped Collections
+Mongo db Validators
+Grid FS
+Update Documents
+Mongo Python Connectivity
+Enable security
+=================================================
+
+
+
+
+path on my PC--> /home/sunbeam/Documents/DBMS_git/data_collection_dbms/Day12 
+Run this command on CMD not on mongo shell
+## Importing Data into Mongo
+* CSV import
+> mongoimport -d dbda -c books --type csv --headerline /home/sunbeam/Nosql_dbda_0923/dataset_nosql/books_hdr.csv
+
+
+->open mongo shell
+
+use edbd;
+
+show collections;
+
+db.books.find();
+
+
+* JSON import
+> mongoimport -d dbda -c busstops /home/sunbeam/Nosql_dbda_0923/dataset_nosql/busstops.json
+
+
+
+* JS script
+> mongo dbda  /home/sunbeam/Nosql_dbda_0923/dataset_nosql/sales.js
+
+ 
+=========================================================================
+
+## Performance
+
+db.emp.find({ job: 'MANAGER' });
+
+db.emp.find({ job: 'MANAGER' }).explain(true);
+
+db.emp.find({ _id: 7900 });
+
+db.emp.find({ _id: 7900 }).explain(true);😇️
+
+db.emp.aggregate([
+{
+	$match: { job: 'MANAGER' }
+}
+]);
+
+db.emp.aggregate([
+{
+	$match: { job: 'MANAGER' }
+}
+], {
+	explain: true
+});
+
+
+## Mongo Indexes
+Regular index 
+
+db.emp.getIndexes();
+
+## CREATE INDEX idx_job ON emp(job ASC)
+>db.emp.createIndex( { job:1 } )
+
+## get Indexes by using getIndexes()
+> db.emp.getIndexes()
+
+db.emp.find({ job: 'MANAGER' })
+
+db.emp.find({ job: 'MANAGER' }).explain(true);
+
+
+//Composite index😇️
+// CREATE INDEX idx_dept_job ON emp(deptno ASC, job ASC);
+>db.emp.createIndex( { job:1 , deptno: 1} )😇️
+
+db.emp.find({ deptno: 30, job: 'MANAGER' });
+
+db.emp.find({ deptno: 30, job: 'MANAGER' }).explain(true);
+
+//Unique index
+db.emp.find({ename: 'KING'});
+
+db.emp.find({ename: 'KING'}).explain(true);
+
+>db.emp.createIndex( {ename:1},{unique:true} )😇️
+
+
+db.emp.getIndexes();😇️
+
+db.emp.find({ename: 'KING'}).explain(true);
+
+db.emp.insert({ _id: 1000, ename: 'ADAMS' });
+// error-duplicate index error😇️
+
+// DROP INDEX ON emp(job);
+>db.emp.dropIndex({job:1})😇️
+
+
+
+
+
+
+### TTL index (Time To Live index)😇️
+	* Works on some date time field.
+
+db.ttl.insert({_id: 1, time: new Date(), msg: 'Message 1' });
+db.ttl.insert({_id: 2, time: new Date(), msg: 'Message 2' });
+db.ttl.insert({_id: 3, time: new Date(), msg: 'Message 3' });
+db.ttl.insert({_id: 4, time: new Date(), msg: 'Message 4' });
+db.ttl.insert({_id: 5, time: new Date(), msg: 'Message 5' });
+db.ttl.insert({_id: 6, time: new Date(), msg: 'Message 6' });
+
+
+db.ttl.find();
+
+db.ttl.find();😇️
+
+// create index on "time" field so that documents older than "100" seconds will be auto-deleted.😇️
+
+db.ttl.createIndex({time:1},{expireAfterSeconds:100})😇️
+
+db.ttl.getIndexes();
+
+db.ttl.dropIndex({time:1})
+
+
+
+
+
+==========================================================================
+### GeoSpatial Index
+* Geo locations are traditionally represented in longitude and latitude.
+* Nowadays location info is used for various purposes
+	* To mark some geo location (of a cab, of a building).
+	* Driving directions (path -- set of points connected linearly).
+	* Find nearby services (search locations/features/services within a radius)
+	* To mark some region (rectangle or polygon).
+* Geo information is stored as GeoJSON format (specification).
+* geojson.io
+
+* GeoJSON formats
+	* type: Point, Line, Polygon
+	* coordinates: 
+		* Point: [long, lat]
+		* Line: [ [long, lat], [long, lat], [long, lat], ... ]
+		* Polygon:  [ [long, lat], [long, lat], [long, lat], [long, lat], [long, lat], [long, lat] ]
+			* Anti-clockwise coordinates
+			* First and Last coordinates must be same
+
+
+* Mongo GeoSpatial Indexes
+	* 2d index -- legacy indexes on longitude & latitude (not for GeoJSON).😇️
+	* 2d sphere index -- newer indexes on GeoJSON fields.😇️
+	* haystack index😇️ -- for smaller area (within mall, ...).
+
+* Mongo GeoSpatial operators
+	* $geoWithin 😇️-- find locations within given area (rectangle or polygon).
+	* $geoIntersects😇️ -- check if multiple regions/area are intersecting.
+	* $geoNear 😇️-- find locations within a radius.
+
+```JS
+create a Collection point by inserting 4 points
+db.points.insert({name:'p1',location:{type:'Point',coordinates:[0.5,0.5]}})
+db.points.insert({name:'p2',location:{type:'Point',coordinates:[0.25,0.25]}})
+db.points.insert({name:'p3',location:{type:'Point',coordinates:[0.75,0.75]}})
+db.points.insert({name:'p4',location:{type:'Point',coordinates:[1.5,1.5]}})
+
+db.points.find();
+
+create a Polygon geoWithin for above 4 points demo
+
+db.points.find({
+      location:{
+        $geoWithin:{
+          $geometry: {
+            "type": "Polygon",
+            "coordinates": [
+            [
+            [
+              0.0,0.0
+            ],
+            [
+              1.0,0.0
+            ],
+            [
+              1.0,1.0
+            ],
+            [
+             0.0,1.0
+            ],
+            [
+              0.0,0.0
+            ]  
+          ]
+        ]
+      }
+    }
+  }
+})
+
+
+```
+
+```JS
+find PMT busstops withing area specified by Polygon coordinates
+db.busstops.find().pretty();
+
+db.busstops.find({
+      location:{
+        $geoWithin:{
+          $geometry: {
+            "type": "Polygon",
+            "coordinates": [
+            [
+            [
+              73.85012976902769,
+              18.52317738864086
+            ],
+            [
+              73.84992639554827,
+              18.517141460201202
+            ],
+            [
+              73.85795964798979,
+              18.516620779078664
+            ],
+            [
+              73.86135598509767,
+              18.52321595618845
+            ],
+            [
+              73.8553361301039,
+              18.526648433116094
+            ],
+            [
+              73.85012976902769,
+              18.52317738864086
+            ]
+          ]
+        ]
+      }
+    }
+  }
+}).pretty()
+
+
+Find busstops near  by  given point 
+db.busstops.createIndex({ location: "2dsphere" });
+
+db.busstops.find({
+      location:{
+        $geoNear:{
+          $geometry: {
+            "type": "Point",
+            "coordinates": 
+            [
+          73.84262528763321,
+          18.515772258298796
+        ]    
+      },
+      $maxDistance:350
+    }
+  }
+})
+============================================================================
+## Capped Collections
+
+
+create Capped Collections to store logs having size 10240 and max count of logs 5
+db.createCollection (
+    'logs',{
+    capped: true,
+    size:10240,
+    max:5
+    }
+)
+
+show collections;
+
+## insert 5 messages
+db.logs.insert({message:"Log message 001"})
+db.logs.insert({message:"Log message 002"})
+db.logs.insert({message:"Log message 003"})
+db.logs.insert({message:"Log message 004"})
+db.logs.insert({message:"Log message 005"})
+
+
+
+
+db.logs.find();
+
+### add 3 more  in log
+
+db.logs.insert({message:"Log message 006"})
+db.logs.find();
+db.logs.insert({message:"Log message 007"})
+db.logs.insert({message:"Log message 008"})
+
+
+db.logs.find();
+
+
+### update one message by long string 
+
+db.logs.update({
+  message:"Log message 004"},{
+  $set:{message:'this is new message'}
+})
+//"errmsg" : "Cannot change the size of a document in a capped collection
+
+db.logs.update({
+  message:"Log message 008"},{
+  $set:{message:'this '}
+})
+// error
+
+### update one message by same number of char in orignal string 
+db.logs.update({
+  message:"Log message 004"},{
+  $set:{message:'Log message XYZ'}
+})
+//no error
+
+db.logs.find();
+
+## try to delete one record
+db.logs.deleteOne({
+  message:'Log message 008'
+})
+// NO error
+
+
+
+=====================================
+Mongo db Validators
+
+## Validators 😇️
+* Like CHECK constraint in RDBMS.
+* Check the values to meet some 
+criteria before insert/update the 
+document.
+
+
+create employee collection having 
+following validator
+1 name = type:string
+2 age = type: number 
+3 age = gte: 18 
+4 mobile: having 0 to 9 digit and its length =10  
+-->regex: /^[0-9]{10}$/
+
+
+>db.createCollection("employee",{
+  validator:{
+    $and:[
+        { name: { $type:'string' } },
+        { age:  { $type:'number' } },
+        { age:  { $gte: 18} },
+        { moblie: {$regex: /^[0-9]{10}$/ } }
+    ]
+  }
+})
+
+
+###insert employee having name=Abhishek age=30  
+mobile =9822012345
+>db.employee.insert({name:'Abhishek',age:30,moblie:"9822012345"})
+
+
+
+###insert employee having name=Nikhil 
+age=5 mobile =9822012345
+
+>db.employee.insert({name:'Nikhil',age:5,moblie:"9822012345"})
+
+-----> //error
+
+
+
+###insert employee having name=Nishant age=40 
+>db.employee.insert({name:'Nishant',age:40})
+-----> //error
+
+
+###insert employee having name=Nikhil age=25 
+mobile =098812088115
+
+>db.employee.insert({name:'Nikhil',age:25,moblie:"09822012345"})
+---error
+
+
+
+###insert employee having name=Prashant age=45 
+mobile =9822012345 email='prashant@yahoo.com' 
+  
+
+>db.employee.insert({name:'Prashant',age:45,moblie:"9822012345",email:'prashant@yahoo.com'})
+---
+
+
+
+
+
+
+
+
+
+//No error
+
+
+structured-books
+semi-structured - emp json ,xml
+unstructured - images , pdf, video, 
+========================================
+## Grid FS😇️
+* Used to save larger files like image, recording, 
+PDF documents, etc.😇️
+* Not done using mongo JS shell.
+* Done using Mongo drivers (of different languages) and "mongofiles" command.
+
+cmd> cd dirpath
+
+cmd> mongofiles -d dbda put book.pdf
+
+cmd> mongofiles -d dbda list
+
+cmd> cd different_dirpath
+
+cmd> mongofiles -d dbda get book.pdf
+
+show collections;
+
+db.fs.files.find().pretty();
+
+db.fs.chunks.find().pretty();
+
+db.fs.chunks.find({}, {data:0}).pretty();
+```
+========================================
+
+## Update Documents
+* db.collection.update({criteria}, {changes}, upsert);
+* db.collection.updateOne({criteria}, {changes});
+* db.collection.updateMany({criteria}, {changes})
+
+
+show collections;
+
+db.contact.insert({
+	_id: 1,
+	name: 'Rahul',
+	age: 20
+});
+
+db.contact.insert({
+	_id: 2,
+	name: 'Prashant',
+	age: 40
+});
+
+db.contacts.find();
+
+##increment age by 1 whoes ID = 2   $inc
+db.contact.update(
+  { _id:2 },
+  {$inc:{age:1}}
+  )
+
+db.contacts.find();
+
+##increment age by -1 whoes ID = 1
+db.contact.update(
+  { _id:1 },
+  {$inc:{age:-1}}
+  )
+
+db.contacts.find();   
+=============================================
+## Mongo Python Connectivity
+* cmd> python3 -m pip install pymongo
+
+
+from pymongo import MongoClient
+
+####connect with mongo db on port No 27017
+> client = MongoClient('mongodb://localhost:27017/')
+
+#### connect with database named as 'dbda'
+> db = client['dbda']
+
+#### connect with collection named as 'emp'
+emp = db['emp']
+
+Print all the employee data from emp collection 
+emps=emp.find()
+for e in emps:
+      print(e['_id'], ',', e['ename'], ',', e['job'], ',', e['sal'])
+
+
+Print all the employee data from emp collection using python function getAllEmp()
+def getAllEmp():
+    emps=emp.find()
+    for e in emps:
+        print(e['_id'], ',', e['ename'], ',', e['job'], ',', e['sal'])
+
+
+Print info of all MANAGER from emp collection using python function getAllManagers()
+def getAllManagers():        
+    criteria = { 'job': 'MANAGER' }
+    managers = emp.find(criteria)
+    for e in managers:
+	      print(e['_id'], ', ', e['ename'], ', ', e['job'], ', ', e['sal'])
+
+#### add new emp as _id=101 , ename='nita' , job:"MANAGER" , sal:2000  , deptno:20
+def addNewEmp():
+    newEmp={'_id':101,'ename':'Nita','sal':1000,'job':'trainner','deptno':20}
+    emp.insert_one(newEmp)
+    print("insreted ...")
+
+
+#### Remove emp having id = 7369
+def deleteEmp():
+    emp.delete_one({'_id':7369})
+    print("emp deleted ...")
+
+
+#### Change name of emp id 101 as "Neeta"
+def updateEmp():
+    emp.update_one({'_id':101 },{"$set":{'ename':"Neeta"}})
+    print("emp updated ...")
+
+
+#### print name and sal of all emp sorted by sal using aggregation pipeline   
+def pipeline1():
+    res=emp.aggregate(
+        [{
+        "$sort": {"sal": 1}
+        },
+        {
+        '$project': {'ename': 1, 'sal': 1, '_id': 0}
+        }
+    ])
+    for i in res:
+        print(i)
+
+def AggPipeline2():
+    pipeline=[{
+        "$sort": {"sal": 1}
+        },
+        {
+        '$project': {'ename': 1, 'sal': 1, '_id': 0}
+        }
+    ]
+    res=emp.aggregate(pipeline)
+    for i in res:
+        print(i)
+
+#### find all the employees along with their commissions and calculate total salary   
+def pipeline3():
+    pipeline=[
+    {
+        '$addFields':
+        {
+        'commission': { '$ifNull':[ '$comm', 0 ]}
+        }
+    },
+    {
+        '$addFields':
+        {
+          'totalSalary':{ '$add': ['$sal','$commission']}
+        }
+    },
+    {
+        '$project':{ 'ename':1, 'comm':1, 'sal':1 ,'totalSalary': 1, '_id':0}
+    }
+    ]
+    res = emp.aggregate(pipeline)
+    for i in res:
+        print(i)
+
+=======================================
+# Enable security
+
+* terminal> mongo
+
+```JS
+> use admin
+
+> db.createUser({
+	user: 'root',
+	pwd: 'manager',
+	roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+})
+
+
+> exit
+
+* terminal> sudo vim /etc/mongod.conf
+security:
+    authorization: enabled
+
+* terminal> sudo systemctl restart mongo
+
+* terminal> mongo --authenticationDatabase "admin" -u "root" -p
+
+
+> use dbda
+
+> db.createUser({
+		user: 'dbda',
+		pwd:  'dbda', 
+		roles: [ { role: "readWrite", db: "test" } ]
+})
+
+> exit
+
+
+* terminal> mongo --authenticationDatabase "classwork" -u "dbda" -p

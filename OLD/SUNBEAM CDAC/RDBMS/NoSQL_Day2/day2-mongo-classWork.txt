@@ -1,0 +1,671 @@
+## mongo commands
+- connect to the mongo database
+ - by default the mongo command connects with the 
+ local database running on port 27017😇️
+
+-check mongodb current version
+  >mongo --version
+
+-Open mongo shell
+  > mongo
+
+-exit from mongo shell
+	> exit   or press ctr+c
+
+- list all the databases
+	> show dbs
+
+- by default the mongo installation creates 3 databases:
+    - admin😇️
+    - config😇️
+    - local😇️
+
+- create a new database and switch to it
+	> use mydb
+  - when a db gets created, it get created as an empty database
+  - the empty database wont be shown in the show dbs command
+
+
+- get the selected db information
+  - db here is an object which refers to the currently selected database	
+  > db
+
+- get the statistics of current database
+  > db.stats()
+  
+- drop a database
+  > db.dropDatabase()
+========================================================================
+
+#### collection commands
+- list all the collections
+  > show collections
+
+- create a new colletion
+  > db.createCollection('person')
+  
+- drop a collection
+  > db.person.drop()
+
+help -->db.crea and click in tab
+================================================================
+#### document level commands
+
+- insert a document inside a collection
+   > db.person.insert({"name":"person1", "address":"pune"})
+   > db.person.insert({name:"person2", address:"pune"})
+  
+- get all the documents from a collection
+
+  # get the list of documents
+  > db.person.find()
+
+  # get the list of documents in pretty formatted
+  > db.person.find().pretty()
+
+- drop a collection
+  >db.person.drop();
+
+# create a new collection
+# create table student (....)
+  > db.createCollection('student')
+
+# insert an object into a collection
+# insert into student (...) values (...)
+record 1 =>name:"ayush",standard:8,class:"B",roll:3
+record 2 =>name:"jayesh",standard:5,class:"C",roll:23,mobile:"456545532"
+
+> db.student.insert({name:"ayush",standard:8,class:"B",roll:3})
+> db.student.insert({name:"jayesh",standard:5,class:"C",roll:23,mobile:"456545532"})
+
+
+
+# insert multiple documents
+# insert into student (...) values (...), (...), (...);
+[
+    {name:"sanjay",roll:4},
+    {name:"ajay",roll:5, standard:6},
+    {name:"vijay",roll:6,class:"D"}
+]
+> db.student.insertMany([
+    {name:"sanjay",roll:4},
+    {name:"ajay",roll:5, standard:6},
+    {name:"vijay",roll:6,class:"D"}
+    ])
+
+
+> db.person.insertMany([
+    {name: 'person1', address: 'address 1', email: 'person1@test.com'},
+    {name: 'person2', address: 'address 2', email: 'person2@test.com'},
+    {name: 'person3', address: 'address 3', email: 'person3@test.com'},
+    {name: 'person4', address: 'address 4', email: 'person4@test.com'},
+    {name: 'person5', address: 'address 5', email: 'person5@test.com'},
+    {name: 'person6', address: 'address 6', email: 'person6@test.com'},
+    {name: 'person7', address: 'address 7', email: 'person7@test.com'},
+    {name: 'person8', address: 'address 8', email: 'person8@test.com'},
+    {name: 'person9', address: 'address 9', email: 'person9@test.com'},
+    {name: 'person10', address: 'address 10', email: 'person10@test.com'},
+    {name: 'person11', address: 'address 11', email: 'person11@test.com'},
+    {name: 'person12', address: 'address 12', email: 'person12@test.com'},
+    {name: 'person13', address: 'address 13', email: 'person13@test.com'},
+    {name: 'person14', address: 'address 14', email: 'person14@test.com'},
+    {name: 'person15', address: 'address 15', email: 'person15@test.com'},
+    {name: 'person16', address: 'address 16', email: 'person16@test.com'},
+    {name: 'person17', address: 'address 17', email: 'person17@test.com'},
+    {name: 'person18', address: 'address 18', email: 'person18@test.com'},
+    {name: 'person19', address: 'address 19', email: 'person19@test.com'},
+    {name: 'person20', address: 'address 20', email: 'person20@test.com'},
+    {name: 'person21', address: 'address 21', email: 'person21@test.com'},
+    {name: 'person22', address: 'address 22', email: 'person22@test.com'},
+    {name: 'person23', address: 'address 23', email: 'person23@test.com'},
+    {name: 'person24', address: 'address 24', email: 'person24@test.com'},
+    {name: 'person25', address: 'address 25', email: 'person25@test.com'}
+])
+
+
+
+### finding the documents
+
+- 😇️the find() returns a collection of objects known as cursor
+- the find() by default returns only 20 records
+- if you want to see further records, use it (iterate) command which will load next 20 records
+
+# find all the documents
+# select * from student;
+> db.person.find()
+
+
+# pretty print the document
+# print in JSON readable format
+> db.person.find().pretty()
+
+
+
+# print the count of records
+# select count(*) from student
+> db.student.find().count();
+
+
+
+# limit the number of records to 5
+# select * from person limit 5
+> db.person.find().limit(5)
+
+
+
+# skip first 0 documents
+# show first 5 records
+> db.person.find().skip(0).limit(5)
+
+
+- skip first 5 records and show next 5 records
+> db.person.find().skip(5).limit(5)
+
+
+# get all the records in an array
+>arrPersons=db.person.find().toArray()😇️
+>arrPersons
+
+
+# person an action programmatically on array of documents
+>arrPersons.forEach((item)=>{print(item.name)})
+>db.person.find().forEach((item)=>{print(item.name)})
+
+
+ascending order  = 1
+descending order =-1
+
+# sort collection in ascending order by email
+# select * from person order by email ASC {email:-1}
+> db.person.find().sort({email:1})😇️
+
+
+# sort collection in descending order by email
+# select * from person order by email DESC
+>db.person.find().sort({email:-1})
+
+
+==============================================
+#### iteration logic on cursor
+
+# create a variable to store the cursor
+> cursor = db.person.find()
+
+# check if the cursor has got any records
+> cursor.hasNext()
+
+# show the next records
+> cursor.next()
+
+=================================================
+insert dept and emp records from given field
+
+# list all departments
+>db.dept.find()
+
+
+# list all employees
+>db.emp.find().pretty()
+
+
+# list all employees order by ename ASC
+>db.emp.find().sort({ename:1})
+
+
+# list all employees order by dept no DESC
+>db.emp.find().sort({deptno:-1})
+
+# list all employees order by salary DESC
+>db.emp.find().sort({sal:-1})
+
+
+
+# list all employees order by dept no ASC and salary 
+DESC
+>db.emp.find().sort({deptno:1,sal:-1})😇️
+
+
+# find the employee who is getting the highest salary
+>db.emp.find().sort({sal:-1}).limit(1)
+
+
+
+# find the top 3 paying employees
+>db.emp.find().sort({sal:-1}).limit(3)
+
+
+# find the employee who is getting the lowest salary
+>db.emp.find().sort({sal:1}).limit(1)
+
+
+
+# find the top 3 lowest paying employees
+>db.emp.find().sort({sal:1}).limit(3)
+
+
+========================================
+# advanced mongo queries
+## finding the documents
+
+## projection
+
+- select the columns / fields in the results
+- syntax
+
+  - >db.collection.find(<selection>, <projection>)
+  - where
+    - 😇️selection: WHERE clause in SQL, which is used to filter the records
+    - 😇️projection: decides the column names to be included in the result
+
+- ways
+
+  - 😇️you can not mix inclusion and exclusion together except 
+  the case of _id otherwise you will see following error
+
+    - Cannot do exclusion on field job in inclusion projection
+
+  inclusion=1
+  exclusion=0
+  - inclusion
+
+    # find all employees with name, dept no
+    >db.emp.find({},{ename:1,deptno:1})
+
+
+
+    # select ename, deptno from emp;
+    >db.emp.find({},{ename:1,deptno:1,_id:0})
+
+
+
+
+    # find all employees with only ename and job
+   >db.emp.find({},{ename:1,job:1,_id:0})
+
+
+
+    # find all department names
+    >db.dept.find({},{dname:1,_id:0})
+    
+ 
+
+  - exclusion
+
+    # find all employees with name, dept no
+    # select ename, deptno from emp;
+    > db.emp.find({},{_id:0,job:0,mgr:0,sal:0,comm:0})
+    
+    # find all department names
+    >db.dept.find({},{_id:0,loc:0})
+    
+ 
+### selection criteria
+
+- used to filter the records based on the criteria 
+passed in the function
+- similar to the where clause in the SQL used in 
+relational databases
+
+- examples on relational operators
+
+  - $eq, $ne, $lt, $gt, $lte, $gte, $in, $nin
+  # find employee with name KING
+  # select * from emp where ename = 'KING';
+  > db.emp.find({ename:"KING"})
+  > db.emp.find({
+      ename: 
+      {
+        $eq:"KING"
+      }
+    })
+  
+
+  # find all employees except name KING
+  # select * from emp where ename != 'KING';
+  >db.emp.find({
+      ename: 
+      {
+        $ne:"KING"
+      }
+    })
+
+  # find the CLERKs
+  # select * from emp where job = 'CLERK';
+  > db.emp.find({job:"CLERK"})
+
+  > db.emp.find({
+    job:
+      {$eq:"CLERK"}
+    })
+
+
+  # find the employees earning less than or 
+  equal to 1000
+  # select * from emp where sal <= 1000;
+  >db.emp.find({
+    sal:
+      {$lte:1000}
+    })
+
+  # find out the employees not working in 
+  department 30
+  # select * from emp where deptno != 30;
+  > db.emp.find({
+    deptno:
+      {$ne:30}
+    })
+
+
+  # find the employees who are either MANAGER 
+  or ANALYST
+  # select * from emp where job in ['MANAGER', 'ANALYST']
+  > db.emp.find({
+    job:
+      { $in:['MANAGER', 'ANALYST']}
+  })
+
+
+  # find the employees who not MANAGER or ANALYST
+  >db.emp.find({
+    job:
+      { $nin:['MANAGER', 'ANALYST']}
+  })
+ 
+
+
+- examples on logical operators
+
+  - $or, $and, $nor, $not
+
+ 
+    # find the employees having salary in the 
+    range between 900 to 1300
+    # select * from emp where sal < 1300 and sal > 900
+    
+    >db.emp.find({
+      $and:[
+        { sal:{ $gt: 900 } },
+        { sal:{ $lt: 1300 } }
+      ]
+    })
+
+    # find all the clerks in dept 20
+    # select * from emp where job = 'CLERK' and deptno = 20 
+    >db.emp.find({
+      $and:[
+        { job: 'CLERK' },
+        { deptno : 20  }
+      ]
+    })
+
+
+
+    >db.emp.find({
+      $and:[
+        { job: { $eq:'CLERK' } },
+        { deptno : { $eq:20  }  }
+      ]
+    })
+
+
+    # find all employees who are working in 
+    dept 30 or getting salary > 1300
+    # select * from emp where deptno = 30 or sal > 1300
+    >db.emp.find({
+      $or:[
+        { deptno : { $eq:30  }  },
+        { sal: { $gt:1300 } },
+      ]
+    }).count();
+
+
+
+### mixing both selection and projection
+
+
+# get department and salary of KING
+# select deptno, sal from emp where ename = 'KING';
+
+>
+db.emp.find({
+  ename:{ $eq: "KING"}
+},{
+  deptno:1,
+  sal:1,
+  _id:0
+})
+
+>db.emp.find({
+  ename: "KING"
+},{
+  deptno:1,
+  sal:1,
+  _id:0
+})
+
+
+# find the employee name who is getting the 
+lowest salary in dept 30
+# select ename from emp where deptno = 30 order by sal ASC limit 1
+>db.emp.find({
+              deptno:
+                  { $eq : 30}
+             },{
+                ename:1,
+                _id:0
+             })
+            .sort({sal:1})
+            .limit(1)
+
+# find the highest paying employee's name 
+and salary who is working in dept 10
+# select ename, sal from emp where deptno = 10 order by sal DESC limit 1
+
+>db.emp.find({
+  deptno:
+  { $eq : 10}
+},{
+  ename:1,
+  sal:1,
+  _id:0
+}).sort({sal:-1}).limit(1)
+
+
+-------------------------------------------------------------------
+### exists
+
+
+
+# find the employees where comm attribute exists
+# exists means the attribute exists, it may contain null
+> db.emp.find({comm: {$exists:true}})
+
+
+# find the employees for whom the 
+commission attribute is missing
+>db.emp.find( { comm: { $exists:false } } )
+
+
+# find the employee name and comm who are 
+getting valid (not null) commission
+>db.emp.find({
+    $and:[
+        {comm: { $exists:true } },
+        {comm: { $ne:null } }
+    ]
+},{
+  ename:1,
+  comm:1,
+  _id:0
+})
+
+
+# find all employees name and comm who are getting 
+some commission (> 0)
+>db.emp.find({
+    $and:[
+        {comm: { $exists:true } },
+        {comm: { $ne:null } },
+        {comm: { $gt:0 } }
+    ]
+},{
+  ename:1,
+  comm:1,
+  _id:0
+})
+
+### regular expression
+
+- one of the pattern matching technique
+- used to search/find a value matching required pattern
+- the regular expressions are used across the languages (language neutral)
+- used for text processing and data cleansing
+- case sensitive😇️
+- wild character /   /
+  - $: ending with
+  - ^: starting with
+  - .: any single character
+  - []: one character from list of characters
+  - *: zero or more
+  - +: one or more
+  - ?: zero or one
+
+
+# find all the employees having name ending with R
+>db.emp.find({ename:/R$/},{ename:1,_id:0})
+
+
+# find all the employees having name 
+starting with A
+>db.emp.find({ename:/^A/},{ename:1,_id:0})
+
+
+# find the employees having 'A' in their names😇️
+>db.emp.find({ename:/A/},{ename:1,_id:0})
+
+
+# find the employees having 'A' multiple times
+>db.emp.find({ename:/.*A.*A.*/},{ename:1,_id:0})
+
+
+# find the employees having 'A' and 'E' characters
+>db.emp.find({ename:/.*A.*E.*/},{ename:1,_id:0})
+
+
+# find employee having name 'JAMES'
+>db.emp.find({ ename:"JAMES"})
+>db.emp.find({ ename:/JAMES/})
+>db.emp.find({ ename: { $regex:/JAMES/ } })
+
+
+
+# exact match
+# find employee having name 'James'
+>db.emp.find({ ename:/James/i})
+
+==============================================
+## Delete Records
+// delete a document where deptno=30. 
+[if many recored are matching still delete one]
+>db.emp.deleteOne({deptno:30})😇️
+
+>db.emp.find({},{ename:1,deptno:1,_id:0})
+
+// delete all documents where deptno=30
+>db.emp.deleteMany({deptno:30})😇️
+
+>db.emp.find({},{ename:1,deptno:1,_id:0})
+
+
+db.emp.find({},{ename:1,comm:1,_id:0})
+// delete all documents who has comm field.
+>db.emp.deleteMany({ comm: {$exists:true } })
+
+// delete all documents
+
+>db.emp.deleteMany({})😇️
+
+=================================================================
+### update / upsert / modify
+
+- the document exists and you are suppose to update it
+- update() will update the entire object😇️
+- update() will add the attribute/property if it does not exist
+- syntax
+  - update(<criteria>, <newValues>, <upsert>, <multiple>)😇️
+  - where
+    - criteria: used to select the matching document(s)
+    - newValues: new values you want to update the document with
+    - upsert:
+      - used to insert a new document if it does not exist
+      - if the document exists, update it but if it does not exist then create new document
+      - by default, it is set to false😇️
+    - multiple:
+      - used to update the multiple documents
+      - by default, it is set to false😇️
+
+
+
+# insert some data
+>db.contacts.insert({name: 'contact1', email: 'c1@test.com'})
+>db.contacts.insert({name: 'contact2', phone: '1236548'})
+>db.contacts.insert({name: 'contact3', email: 'c1@teset.com', phone: '1656454'})
+>db.contacts.insert({name: 'contact4', address: 'pune'})
+
+db.contacts.find()
+
+
+
+# update the existing contact1 with
+ new values xyz@gmail.com
+>db.contacts.update({name:'contact1'},{email:"xyz@gmail.com"})
+"_id" : ObjectId("66713365d1ffb3f0a4f4d9fe")
+
+>db.contacts.update({"_id" : ObjectId("66713365d1ffb3f0a4f4d9fe")},
+{name:'contact1',email:"xyz@gmail.com"})
+
+
+$set
+# add the properties to existing object contact2=> pqr@gmail.com
+> db.contacts.update({name:'contact2'},{$set:{email:"pqr@gmail.com"}})
+
+
+# update contact1 with phone=989889888
+# $set is used to add/update only the required attributes
+>db.contacts.update({name:'contact1'},{$set:{phone:"989889888"}})
+
+# update contact4 with email address =contact4@test.com
+>
+
+
+# update contact5 with email address = contact5@test.com
+# since there is no contact with name contact5, 
+nothing will get updated/inserted😇️
+>db.contacts.update({name:'contact5'},{$set:{email:"contact5@test.com"}})
+
+
+
+# update contact5 with email address if exists or create new contact otherwise
+# since the third parameter is set to true (upsert), it will create a new record if it does not find any existing one matching with the pattern
+
+>db.contacts.update({name:'contact5'},{$set:{email:"contact5@test.com"}},true)
+
+
+
+# update all contacts with address = 'pune'
+>db.contacts.update({},{$set: {address: 'pune'}},false,true)
+
+# param1: select all ({})
+# param2: updated values ({$set: {address: 'pune'}})
+# param3: no upsert (false)
+# param4: update multiple documents (true)
+
+
+
+# update all contacts with zipcode = 411041
+>db.contacts.updateMany({},{$set: {zipcode: 411041 }})
+
+
+# update all contacts with state = MH and country = india
+>db.contacts.updateMany({},{$set: {state: "MH",country :"india" }})
+==========================

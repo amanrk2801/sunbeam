@@ -1,0 +1,89 @@
+A
+1.mysql> SELECT o.onum,c.cname FROM customers AS c INNER JOIN orders AS o ON o.cnum=c.cnum order by o.onum;
++------+----------+
+| onum | cname    |
++------+----------+
+| 3001 | Cisneros |
+| 3002 | Pereira  |
+| 3003 | Hoffman  |
+| 3005 | Liu      |
+| 3006 | Cisneros |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3009 | Giovanni |
+| 3010 | Grass    |
+| 3011 | Clemens  |
++------+----------+
+10 rows in set (0.03 sec)
+
+2.mysql> SELECT s.sname,c.cname,o.onum FROM salespeople AS s INNER JOIN orders AS o ON s.snum=o.snum INNER JOIN customers AS c ON o.cnum=c.cnum ORDER BY o.onum;
++---------+----------+------+
+| sname   | cname    | onum |
++---------+----------+------+
+| Rifkin  | Cisneros | 3001 |
+| Motika  | Pereira  | 3002 |
+| Peel    | Hoffman  | 3003 |
+| Serres  | Liu      | 3005 |
+| Rifkin  | Cisneros | 3006 |
+| Serres  | Grass    | 3007 |
+| Peel    | Clemens  | 3008 |
+| Axelrod | Giovanni | 3009 |
+| Serres  | Grass    | 3010 |
+| Peel    | Clemens  | 3011 |
++---------+----------+------+
+10 rows in set (0.11 sec)
+
+
+3.mysql> SELECT c.cname,s.sname,s.comm FROM salespeople AS s INNER JOIN customers AS c ON c.snum = s.snum WHERE s.comm>0.12;
++----------+--------+------+
+| cname    | sname  | comm |
++----------+--------+------+
+| Liu      | Serres | 0.13 |
+| Grass    | Serres | 0.13 |
+| Cisneros | Rifkin | 0.15 |
++----------+--------+------+
+3 rows in set (0.00 sec)
+
+
+4.mysql> SELECT s.sname, o.amt,c.rating,o.amt*s.comm as commision FROM orders as o INNER JOIN customers as c ON o.cnum=c.cnum INNER JOIN salespeople AS s ON s.snum=o.snum WHERE c.rating>100;
++---------+---------+--------+-----------+
+| sname   | amt     | rating | commision |
++---------+---------+--------+-----------+
+| Serres  |  309.95 |    300 |   40.2935 |
+| Serres  |   75.75 |    300 |    9.8475 |
+| Serres  | 5160.45 |    200 |  670.8585 |
+| Rifkin  | 1098.16 |    300 |  164.7240 |
+| Rifkin  |   18.69 |    300 |    2.8035 |
+| Axelrod | 1713.23 |    200 |  171.3230 |
++---------+---------+--------+-----------+
+6 rows in set (0.00 sec)
+
+
+5.mysql> SELECT s.sname,sp.sname FROM salespeople AS s JOIN salespeople AS sp ON(s.sname!=sp.sname and s.city=sp.city and s.sname<sp.sname);
++--------+-------+
+| sname  | sname |
++--------+-------+
+| Motika | Peel  |
++--------+-------+
+1 row in set (0.00 sec)
+
+
+B
+
+1. SELECT s.sname,sum(sp.QTY) FROM S AS s INNER JOIN SP AS sp ON s.`S#`=sp.`S#` GROUP BY s.sname;
+2. SELECT p.Pname,sum(sp.QTY) FROM P AS p INNER JOIN SP AS sp ON p.`P#`=sp.`P#` GROUP BY p.Pname;
+3. SELECT j.Jname,sum(sp.QTY) FROM J AS j INNER JOIN SP AS sp ON j.`J#`=sp.`J#` GROUP BY j.Jname;
+4. SELECT p.Pname,s.Sname,j.Jname,sum(sp.QTY) FROM SP AS sp INNER JOIN J AS j ON j.`J#`=sp.`J#` INNER JOIN P AS p ON p.`P#`=sp.`P#` INNER JOIN S AS s ON s.`S#` = sp.`S#` GROUP BY j.Jname,s.Sname,p.Pname;
+5. SELECT sp.`S#`,j.city,s.city FROM SP AS sp INNER JOIN J AS j ON sp.`J#`=j.`J#` INNER JOIN S AS s ON s.`S#`=sp.`S#` WHERE j.city=s.city ;
+6. SELECT p.Pname,p.color,SUM(sp.QTY) FROM P AS p INNER JOIN SP AS sp ON p.`P#`=sp.`P#` GROUP BY p.Pname,p.color HAVING p.color='red';
+7. SELECT s.sname,s.status,sum(sp.QTY) FROM S AS s INNER JOIN SP AS sp ON s.`S#`=sp.`S#` GROUP BY s.sname,s.status HAVING s.status=20;
+8. select sp.`p#`,sum(sp.qty),p.weight from sp as sp inner join p as p on sp.`p#`=p.`p#` group by `p#` having p.weight >14;
+9. SELECT j.Jname,SUM(sp.QTY) FROM SP AS sp LEFT JOIN J AS j on sp.`J#`=j.`J#` GROUP BY j.Jname HAVING SUM( sp.QTY)>500;
+10. SELECT p.Pname,p.weight,SUM(sp.QTY) FROM SP AS sp INNER JOIN P AS p GROUP BY p.Pname,p.weight HAVING p.weight<15;
+11. select s.sname,s.status from s inner join s s1 on s.status=s1.status where s1.sname='CLARK' AND s.sname!='CLARK';
+12. select p.pname,p.color,p.weight,p1.color from p cross join p p1 where p1.color='red' group by p.pname,p.color,p.weight,p1.color having p.weight>min(p1.weight);
+13. select a.jname,b.city from J a inner join J b on a.city=b.city where b.Jname='TAPE' and a.jname!='TAPE';
+14. select p.pname,p.color,p.weight,p1.color from p cross join p p1 where p1.color='green' group by p.pname,p.color,p.weight,p1.color having p.weight<max(p1.weight);
+15. SELECT s.sname, (sp.qty) FROM s s INNER JOIN sp sp ON s.`s#`=sp.`s#` ORDER BY sp.qty DESC LIMIT 1 ;
+16. SELECT s.sname, SUM(sp.qty) AS Tqty FROM s s INNER JOIN sp sp ON s.`s#`=sp.`s#` GROUP BY s.sname ORDER BY Tqty DESC LIMIT 1;
+

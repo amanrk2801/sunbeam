@@ -1,0 +1,464 @@
+# Cassandra is a NoSQL database which is distributed and scalable. It is😇️ provided by Apache.
+
+
+# Apache Cassandra is highly scalable, high performance, distributed NoSQL database. Cassandra is designed to handle huge amount of data across many commodity servers, providing high availability without a single point of failure.
+
+# These databases are 😇️schema-free, support easy replication, have simple API, 😇️eventually consistent, and can handle huge amounts of data.
+
+# 
+Cassandra is a 😇️column-oriented database.
+Cassandra is scalable, consistent, and fault-tolerant.
+Cassandra's distribution design😇️ is based on Amazon's Dynamo and its data model😇️ on Google's Bigtable.
+Cassandra is created at Facebook. It is totally different from relational database management systems.
+Cassandra follows a😇️ Dynamo-style replication model with no single point of failure, but adds a more powerful "column family" data model.
+Cassandra is being used by some of the biggest companies like Facebook, Twitter, Cisco, Rackspace, ebay, Twitter, Netflix, and more.
+
+#
+Cassandra was developed at Facebook by 😇️Avinash Lakshman and Prashant Malik.😇️😇️
+It was developed for Facebook inbox search feature.
+It was open sourced 😇️by Facebook in July 2008.
+It was accepted by Apache😇️ Incubator in March 2009.
+Cassandra is a top level project of Apache since February 2010.
+The latest version of Apache Cassandra is 3.2.1.
+
+#
+Features of Cassandra:
+There are a lot of outstanding technical features which makes Cassandra very popular. Following is a list of some popular features of Cassandra:
+
+High Scalability
+Cassandra is highly scalable which facilitates you to add more hardware to attach more customers and more data as per requirement.
+
+Rigid Architecture😇️
+Cassandra has not a single point of failure and it is continuously available for business-critical applications that cannot afford a failure.
+
+Fast Linear-scale Performance
+Cassandra is linearly 😇️scalable. It increases your throughput because it facilitates you to increase the number of nodes in the cluster. Therefore it maintains a quick response time.
+
+Fault tolerant
+Cassandra is fault tolerant. Suppose, there are 4 nodes in a cluster, here each node has a copy of same data. If one node is no longer serving then other three nodes can served as per request.
+
+Flexible Data Storage
+Cassandra supports 😇️all possible data formats like structured, semi-structured, and unstructured. It facilitates you to make changes to your data structures according to your need.
+
+Easy Data Distribution
+Data distribution in Cassandra is very easy because it provides the flexibility to distribute data where you need by replicating data across multiple data centers.
+
+Transaction Support
+Cassandra 😇️supports properties like Atomicity, Consistency, Isolation, and Durability (ACID).
+
+Fast writes
+Cassandra was designed to run on cheap commodity hardware. It performs blazingly fast writes and can store hundreds of terabytes of data, without sacrificing the read efficiency.
+
+#
+In Cassandra, each node is independent and at the same time interconnected to other nodes. All the nodes in a cluster play the same role.
+😇️Every node in a cluster can accept read and write requests, regardless of where the data is actually located in the cluster.
+In the case of failure of one node, Read/Write requests can be served from other nodes in the network.
+
+#
+Data Replication in Cassandra
+In Cassandra, 😇️nodes in a cluster act as replicas for a given piece of data. If some of the nodes are responded with😇️ an out-of-date value, Cassandra😇️ will return the most recent value to the client. After returning the most recent value, Cassandra performs a 😇️read repair in the background to update the stale values.
+
+#
+Components of Cassandra
+The main components of Cassandra are:
+
+
+Node: A Cassandra node is a place where data is stored.
+
+Data center:😇️ Data center is a collection of related nodes.
+
+Cluster: 😇️A cluster is a component which contains one or more data centers.
+
+Commit log: In Cassandra, the 😇️commit log is a crash-recovery mechanism. 😇️Every write operation is written to the commit log.
+
+Mem-table: A mem-table is a 😇️memory-resident data structure. 😇️After commit log, the data will be written to the mem-table. Sometimes, for a😇️ single-column family, there will be multiple mem-tables.
+
+SSTable: 😇️It is a disk file to which the data is flushed from the mem-table when its contents reach a threshold value.
+
+Bloom filter: These are nothing but quick, nondeterministic, algorithms for testing whether an element is a member of a set. 😇️It is a special kind of cache. 😇️Bloom filters are accessed after every query.
+
+#
+Cassandra Query Language
+Cassandra Query Language (CQL) is used to access Cassandra through its nodes. CQL treats the database (Keyspace) as a container of tables. Programmers use cqlsh: a prompt to work with CQL or separate application language drivers.
+
+The client can approach any of the nodes for their read-write operations. That node (mean client approced node for read-write) (coordinator)😇️ plays a proxy between the client and the nodes holding the data.
+
+Write Operations😇️
+Every write activity of nodes is captured by the commit logs written in the nodes. Later the data will be captured and stored in the mem-table. Whenever the mem-table is full, data will be written into the SStable data file. All writes are automatically partitioned and replicated throughout the cluster. Cassandra periodically consolidates the SSTables, discarding unnecessary data.
+
+Read Operations😇️
+In Read operations, Cassandra gets values from the mem-table and checks the bloom filter to find the appropriate SSTable which contains the required data.
+
+There are three types of read request that is sent to replicas by coordinators.
+
+-Direct request
+-Digest request
+-Read repair request
+
+The coordinator sends direct request to one of the replicas. After that, the coordinator sends the digest request to the number of replicas specified by the consistency level and checks if the returned data is an updated data.
+
+After that, the coordinator sends digest request to all the remaining replicas. If any node gives out of date value, a background read repair request will update that data. This process is called read repair mechanism
+
+
+# nosql vs relational
+
++NoSQL Database supports a very simple query language.
+=Relational Database supports a powerful query language.
++NoSQL Database is only eventually consistent.
++Relational Database follows acid properties. (Atomicity, Consistency, Isolation, and Durability)
++NoSQL databases don't support transactions (support only simple transactions).
+=Relational Database supports transactions (also complex transactions with joins).
++NoSQL Database is used to handle data coming in high velocity.	
+=Relational Database is used to handle data coming in low velocity.
++NoSQL databases have no single point of failure.
+=Relational databases have a single point of failure with failover.
++NoSQL has decentralized structure.
+=Relational database has centralized structure.
++😇️NoSQL database gives both read and write scalability.	
+=😇️Relational database gives read scalability only.
+
+#
+Use Cases/ Applications of Cassandra
+Cassandra can be used for different type of applications. Following is a list of use cases where Cassandra should be preferred:
+
+Messaging
+Cassandra is a great database which can handle a big amount of data. So it is preferred for the companies that provide Mobile phones and messaging services. These companies have a huge amount of data, so Cassandra is best for them.
+
+Handle high speed Applications
+Cassandra can handle the high speed data so it is a great database for the applications where data is coming at very high speed from different devices or sensors.
+
+Product Catalogs and retail apps
+Cassandra is used by many retailers for durable shopping cart protection and fast product catalog input and output.
+
+Social Media Analytics and recommendation engine
+Cassandra is a great database for many online companies and social media providers for analysis and recommendation to their customers.
+
+# types of data types in cassandra (refer class ppt)😇️
+# 
+Cassandra Automatic Data Expiration😇️
+Cassandra provides functionality by which data can be automatically expired.
+
+During data insertion, you have to specify 'ttl' value in seconds. 'ttl' value is the 😇️time to live value for the data. After that particular amount of time, data will be automatically removed.
+	
+
+#
+Cassandra Data Model
+
+Data model in Cassandra is totally different from normally we see in RDBMS. Let's see how Cassandra stores its data.
+
+Cluster😇️
+Cassandra database is distributed over several machines that are operated together. 😇️The outermost container is known as the Cluster which contains different nodes. Every node contains a replica, and in case of a failure, the replica takes charge. Cassandra arranges the nodes in a cluster, in a 😇️ring format, and assigns data to them.
+
+Keyspace😇️
+Keyspace is the outermost container for data in Cassandra. Following are the basic attributes of Keyspace in Cassandra:
+
+
+Replication factor: It specifies the number of machine in the cluster that will receive copies of the same data.
+
+Replica placement Strategy: It is a strategy which species how to place replicas in the ring. 
+There are three types of strategies such as:
+1) Simple strategy (rack-aware strategy)
+
+2) old network topology strategy (rack-aware strategy)
+
+3) network topology strategy (datacenter-shared strategy)
+
+😇️Column families: column families are placed under keyspace. A keyspace is a container for a list of one or more column families while a column family is a container of a collection of rows. Each row contains ordered columns. Column families represent the structure of your data. 😇️Each keyspace has at least one and often many column families.
+In Cassandra, a well data model is very important because a bad data model can degrade performance, especially when you try to implement the RDBMS concepts on Cassandra.
+
+Cassandra data Models Rules:😇️
+
+-Cassandra doesn't support JOINS, GROUP BY, OR clause, aggregation etc. So you have to store data in a way that it should be retrieved whenever you want.
+
+-Cassandra is optimized for high write performances so you should maximize your writes for better read performance and data availability. There is a tradeoff between data write and data read. So, optimize you data read performance by maximizing the number of data writes.
+
+-Maximize data duplication because Cassandra is a distributed database and data duplication provides instant availability without a single point of failure.
+
+Data Modeling Goals😇️
+You should have following goals while modeling data in Cassandra:
+
+😇️Spread Data Evenly Around the Cluster: To spread equal amount of data on each node of Cassandra cluster, you have to choose integers as a primary key. Data is spread to different nodes based on partition keys that are the first part of the primary key.
+
+😇️Minimize number of partitions read while querying data: Partition is used to bind a group of records with the same partition key. When the read query is issued, it collects data from different nodes from different partitions.
+In the case of many partitions, all these partitions need to be visited for collecting the query data. It does not mean that partitions should not be created. If your data is very large, you can't keep that huge amount of data on the single partition. The single partition will be slowed down. So you must have a balanced number of partitions
+
+# cassandra vs hbase comparision read on googleCassandra	
+
+# cassandra vs rdbms
+
+=Cassandra is used to deal with unstructured data.
+
++RDBMS is used to deal with structured data.
+
+=Cassandra has flexible schema.	
+
++RDBMS has fixed schema.
+
+=In Cassandra, a table is a list of "nested key-value pairs". (Row x Column Key x Column value)
+
++In RDBMS, a table is an array of arrays. (Row x Column)
+
+=In Cassandra, keyspace is the outermost container which contains data corresponding to an application.
+
++In RDBMS, database is the outermost container which contains data corresponding to an application.
+
+=In Cassandra, tables or column families are the entity of a keyspace.
+
++In RDBMS, tables are the entities of a database.
+
+=In Cassandra, row is a unit of replication.
+
++In RDBMS, row is an individual record.
+
+=In Cassandra, column is a unit of storage.
+
++In RDBMS, column represents the attributes of a relation.
+
+=In Cassandra, relationships are represented using collections.
+
++In RDBMS, there are concept of foreign keys, joins etc.
+
+#
+Cassandra Setup and Installation
+Apache Cassandra and Datastax enterprise is used by different organization for storing huge amount of data.
+
+Before installing Apache Cassandra, you must have the following things:
+
+
+=You must have datastax community edition. You can download Cassandra click here
+=JDK must be installed.
+=Platform should be Window
+
+# cassandra syntax😇️
+
+CREATE KEYSPACE <identifier> WITH <properties>   
+
+
+CREATE KEYSPACE javatpoint  
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3}; 
+
+/// Strategy: There are two types of strategy declaration in Cassandra syntax:
+
+
+
+Simple Strategy: Simple strategy is used in the case of one data center. In this strategy, the first replica is placed on the selected node and the remaining nodes are placed in clockwise direction in the ring without considering rack or node location.
+
+Network Topology Strategy: This strategy is used in the case of more than one data centers. In this strategy, you have to provide replication factor for each data center separately.
+
+Replication Factor: Replication factor is the number of replicas of data placed on different nodes. More than two replication factor are good to attain no single point of failure. So, 3 is good replication factor  
+
+Verification:😇️💚️💚️💚️
+To check whether the keyspace is created or not, use the "DESCRIBE" command. By using this command you can see all the keyspaces that are created.
+
+Durable_writes😇️
+By default, the durable_writes properties of a table is set to true, you can also set this property to false. But, this property cannot be set to simplex strategy.
+eg.
+CREATE KEYSPACE sssit  
+WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy',    'datacenter1' : 3 }  AND DURABLE_WRITES = false;  
+
+Using a Keyspace😇️
+To use the created keyspace, you have to use the USE command.
+
+Cassandra Alter Keyspace😇️
+The "ALTER keyspace" command is used to alter the replication factor, strategy name and durable writes properties in created keyspace in Cassandra
+
+Main points while altering Keyspace in Cassandra
+
+😇️Keyspace Name: Keyspace name cannot be altered in Cassandra.
+
+😇️Strategy Name: Strategy name can be altered by using a new strategy name.
+
+😇️Replication Factor: Replication factor can be altered by using a new replication factor.
+
+😇️DURABLE_WRITES: DURABLE_WRITES value can be altered by specifying its value true/false. By default, it is true. If set to false, no updates will be written to the commit log and vice versa.
+
+eg.
+ALTER KEYSPACE javatpoint  
+WITH replication = {'class':'NetworkTopologyStrategy', 'replication_factor' : 1};   
+	
+Cassandra Drop Keyspace😇️
+
+In Cassandra, "DROP Keyspace" command is used to drop keyspaces with all the data, column families, user defined types and indexes from Cassandra.
+
+😇️Cassandra takes a snapshot of keyspace before dropping the keyspace. If keyspace does not exist in the Cassandra, Cassandra will return an error unless IF EXISTS is used.
+
+Syntax:
+
+DROP  keyspace KeyspaceName 
+	
+#
+two type of primary key 1.single 2.compound
+
+CREATE TABLE student(  
+   student_id int PRIMARY KEY,  
+   student_name text,  
+   student_city text,  
+   student_fees varint,  
+   student_phone varint  
+   );   
+   
+   
+   
+   SELECT * FROM student;  
+   
+#
+Cassandra Alter Table😇️
+ALTER TABLE command is used to alter the table after creating it. You can use the ALTER command to perform two types of operation
+
+Add a column
+Drop a column
+
+Adding a Column
+You can add a column in the table by using the ALTER command. While adding column, you have to aware that the column name is not conflicting with the existing column names and that the table is not defined with compact storage option.
+
+Syntax:
+
+ALTER TABLE table name  
+ADD new column datatype;   
+
+eg.
+ALTER TABLE student  
+ADD student_email text; 
+
+Dropping a Column😇️
+You can also drop an existing column from a table by using ALTER command. You should check that the table is not defined with compact storage option before dropping a column from a table.
+
+eg.
+ALTER TABLE student   
+DROP student_email;  
+
+eg. to drop multiple column
+ALTER TABLE student  
+DROP (student_fees, student_phone);  
+
+# drop table😇️
+
+DROP TABLE student;   
+
+to check it
+DESCRIBE COLUMNFAMILIES; 
+
+Cassandra Truncate Table😇️
+TRUNCATE command is used to truncate a table. If you truncate a table, all the rows of the table are deleted permanently.  
+eg.
+TRUNCATE student;   
+
+#
+Cassandra Create Index😇️
+CREATE INDEX command is used to create an index on the column specified by the user. If the data already exists for the column which you choose to index, Cassandra creates indexes on the data during the 'create index' statement execution
+
+Rules for creating Index😇️
+
+-The index cannot be created on primary key as a primary key is already indexed.
+-In Cassandra, Indexes on collections are not supported.
+-Without indexing on the column, Cassandra can't filter that column unless it is a primary key.
+
+syntax:
+CREATE INDEX <identifier> ON <tablename>   
+eg.
+CREATE INDEX name ON student (student_name);   
+
+(Note: You can verify that the index is created or not, by using the creating index query once again. It will show a message that index is already created.)
+
+#Cassandra DROP Index😇️
+DROP INDEX command is used to drop a specified index. If the index name was not specified during index creation, then index name is TableName_ColumnName_idx.
+
+Drop index IF EXISTS KeyspaceName.IndexName   
+
+Rules for dropping an Index
+
+If the index does not exist, it will return an error unless you use IF EXISTS which returns no operation.
+During index creation, you have to specify keyspace name with the index name otherwise index will be dropped from the current keyspace.
+
+eg.
+Drop index IF EXISTS javatpoint.student_name   
+
+(Note: You can verify that the index is dropped or not, by using the DROP index command once again. It will show a message that index is already dropped.
+)
+
+#
+Cassandra Batch😊️
+In Cassandra BATCH is used to execute multiple modification statements (insert, update, delete) simultaneously. It is very useful when you have to update some column as well as delete some of the existing.
+
+syntax:
+BEGIN BATCH  
+<insert-stmt>/ <update-stmt>/ <delete-stmt>  
+APPLY BATCH 
+
+# insert into
+# Cassandra Create Data😇️
+INSERT command is used to insert data into the columns of the table
+eg.
+INSERT INTO student (student_id, student_fees, student_name)   
+VALUES(1,5000, 'Ajeet');  
+INSERT INTO student (student_id, student_fees, student_name)   
+VALUES(2,3000, 'Kanchan'); 
+
+# Cassandra READ Data😇️
+SELECT command is used to read data from Cassandra table. You can use this command to read a whole table, a single column, a particular cell etc. 
+
+SELECT * FROM student;  
+
+
+SELECT * FROM student WHERE student_id=2;  
+// {Note:😇️ WHERE clause can be used only on the columns that are a part of primary key or have a secondary index on them.
+}
+
+#
+Cassandra Update Data😇️
+UPDATE command is used to update data in a Cassandra table. If you see no result after updating the data, it means data is successfully updated otherwise an error will be returned. While updating data in Cassandra table, the following keywords are commonly used:
+
+
+Where: The WHERE clause is used to select the row that you want to update.
+
+Set: The SET clause is used to set the value.
+
+Must: It is used to include all the columns composing the primary key.
+
+eg.
+Update KeyspaceName.TableName   
+Set ColumnName1=new Column1Value,  
+      ColumnName2=new Column2Value,  
+      ColumnName3=new Column3Value,  
+       .  
+       .  
+       .  
+Where ColumnName=ColumnValue 
+
+{Note: 😇️When you use the UPDATE command and the given row is available, then UPDATE creates a fresh row.
+}
+
+eg.
+UPDATE student SET student_fees=10000,student_name='Rahul'  
+WHERE student_id=2;  
+
+#
+Cassandra DELETE Data
+DELETE command is used to delete data from Cassandra table. You can delete the complete table or a selected row by using this command.
+
+eg.
+DELETE FROM student WHERE student_id=3;   
+
+DELETE student_fees FROM student WHERE student_id=4;   
+// delete specific column
+
+#
+Cassandra Collections
+Cassandra collections are used to handle tasks. You can store multiple elements in collection. There are three types of collection supported by Cassandra:
+
+-Set
+-List
+-Map
+
+Set Collection😇️
+A set collection stores group of elements that returns sorted elements when querying.
+
+List Collection😇️
+The list collection is used when the order of elements matters.
+
+Map Collection😇️
+The map collection is used to store key value pairs. It maps one thing to another. For example, if you want to save course name with its prerequisite course name, you can use map collection.
+
+
+
+

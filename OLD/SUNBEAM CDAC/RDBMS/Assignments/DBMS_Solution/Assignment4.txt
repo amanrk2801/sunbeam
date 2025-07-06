@@ -1,0 +1,162 @@
+
+1. Display the PNAME and COLOR from the P table for the CITY=”London”.
+ 
+ mysql>  SELECT Pname , color FROM P WHERE city="London";
++-------+-------+
+| Pname | color |
++-------+-------+
+| Nut   | Red   |
+| Screw | Red   |
+| Cog   | Red   |
++-------+-------+
+
+2. Display all the Suppliers from London.
+
+SELECT * FROM S WHERE city = "London";
+mysql> SELECT * FROM S WHERE city = "London";
++----+-------+--------+--------+
+| S# | Sname | status | city   |
++----+-------+--------+--------+
+| S1 | Smith |     20 | London |
+| S4 | Clark |     20 | London |
++----+-------+--------+--------+
+
+
+3. Display all the Suppliers from Paris or Athens.
+
+mysql> select * from S where city = "Paris" OR city="Athens";
++----+-------+--------+--------+
+| S# | Sname | status | city   |
++----+-------+--------+--------+
+| S2 | jones |     10 | Paris  |
+| S3 | Blake |     30 | Paris  |
+| S5 | Adams |     30 | Athens |
++----+-------+--------+--------+
+
+
+4. Display all the Jobs in Athens.
+
+mysql> SELECT * FROM  J WHERE City = "Athens";
++----+---------+--------+
+| J# | Jname   | City   |
++----+---------+--------+
+| J3 | Reader  | Athens |
+| J4 | Console | Athens |
++----+---------+--------+
+
+5. Display all the Part names with the weight between 12 and 14
+(inclusive of both).
+
+mysql> SELECT * FROM P WHERE weight BETWEEN 12 AND 14;
++----+-------+-------+--------+--------+
+| P# | Pname | color | weight | city   |
++----+-------+-------+--------+--------+
+| P1 | Nut   | Red   |     12 | London |
+| P4 | Screw | Red   |     14 | London |
+| P5 | Cam   | Blue  |     12 | Paris  |
++----+-------+-------+--------+--------+
+
+6. Display all the Suppliers with a Status greater than or equal to 20.
+
+mysql> SELECT * FROM S WHERE status >=20;
++----+-------+--------+--------+
+| S# | Sname | status | city   |
++----+-------+--------+--------+
+| S1 | Smith |     20 | London |
+| S3 | Blake |     30 | Paris  |
+| S4 | Clark |     20 | London |
+| S5 | Adams |     30 | Athens |
++----+-------+--------+--------+
+
+7. Display all the Suppliers except the Suppliers from London.
+
+mysql> SELECT * FROM S WHERE city!= "London";
++----+-------+--------+--------+
+| S# | Sname | status | city   |
++----+-------+--------+--------+
+| S2 | jones |     10 | Paris  |
+| S3 | Blake |     30 | Paris  |
+| S5 | Adams |     30 | Athens |
++----+-------+--------+--------+
+
+8. Display only the Cities from where the Suppliers come from.
+
+mysql> SELECT city FROM S ;
++--------+
+| city   |
++--------+
+| London |
+| Paris  |
+| Paris  |
+| London |
+| Athens |
++--------+
+
+
+9. Display the Supplier table in the descending order of CITY.
+
+SELECT * FROM S ORDER BY city;
+
+mysql> SELECT * FROM S ORDER BY city;
++----+-------+--------+--------+
+| S# | Sname | status | city   |
++----+-------+--------+--------+
+| S5 | Adams |     30 | Athens |
+| S1 | Smith |     20 | London |
+| S4 | Clark |     20 | London |
+| S2 | jones |     10 | Paris  |
+| S3 | Blake |     30 | Paris  |
++----+-------+--------+--------+
+
+10. Display the Part Table in the ascending order of CITY and within the city in the ascending order of Part names.
+
+mysql> SELECT * FROM P ORDER BY city ASC, Pname ASC;
++------+-------+-------+--------+--------+
+| P#   | Pname | Color | Weight | City   |
++------+-------+-------+--------+--------+
+| p6   | Cog   | Red   |     19 | London |
+| p1   | Nut   | Red   |     12 | London |
+| p4   | Screw | Red   |     14 | London |
+| p2   | Bolt  | Green |     17 | Paris  |
+| p5   | Cam   | Blue  |     12 | Paris  |
+| p3   | Screw | Blue  |     17 | Rome   |
++------+-------+-------+--------+--------+
+6 rows in set (0.00 sec)
+
+
+11. Display all the Suppliers with a status between 10 and 20.
+
+mysql> SELECT * FROM S WHERE status BETWEEN 10 AND 20;
++----+-------+--------+--------+
+| S# | Sname | status | city   |
++----+-------+--------+--------+
+| S1 | Smith |     20 | London |
+| S2 | jones |     10 | Paris  |
+| S4 | Clark |     20 | London |
++----+-------+--------+--------+
+
+12. Display all the Parts and their Weight, which are not in the range of 10 and 15.
+
+
+mysql> SELECT Pname, weight
+    -> FROM P
+    -> WHERE weight NOT BETWEEN 10 AND 15;
++-------+--------+
+| Pname | weight |
++-------+--------+
+| Bolt  |     17 |
+| Screw |     17 |
+| Cog   |     19 |
++-------+--------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+

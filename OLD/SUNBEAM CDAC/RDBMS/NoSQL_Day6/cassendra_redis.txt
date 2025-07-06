@@ -1,0 +1,443 @@
+1. Cassandra Practical
+2. Redis introduction
+3. Redis Practical
+4. intro Oracal KV store
+5. MCQ 
+
+
+## cassandra
+
+- NoSQL database which can be accessed using CQL
+- all commands are case insensitive
+
+```bash
+
+# start the cassandra server in background
+> cassandra
+
+# start the cql shell to interact with cassandra
+> cqlsh
+
+
+#running in background
+>sudo service cassandra status
+
+```
+
+
+### mapping
+
+| mysql    | cassandra |
+| -------- | --------- |
+| database | keyspace  |
+| table    | table     |
+| row      | row       |
+| column   | column    |
+
+### keyspace
+
+###similar to the database in MySQL
+
+# get all keyspaces 
+> describe keyspaces
+
+# create a new keyspace as db1 
+> create keyspace db1;
+
+# create keyspace dbda with 'replication_factor': 1 and  'class': 'SimpleStrategy' 
+>create keyspace dbda with replication = {'replication_factor': 1 ,'class': 'SimpleStrategy'};
+
+# create keyspace db1 with 'replication_factor': 1 and  'class': 'SimpleStrategy' 
+>create keyspace db1 with replication = {'replication_factor': 1 ,'class': 'SimpleStrategy'};
+
+
+# show the information (schema) of selected keyspace (dbda)
+>describe keyspace dbda;
+
+delete keyspace db1
+> drop keyspace db1;
+
+-- use the required keyspace
+-- henceforth all the commands will be executed under the dbda
+-- use dbda;
+> use dbda;
+
+
+### table related commands
+
+- table in cassandra is similar to the table in MySQL
+
+-- get all the tables in the selected keyspace
+-- show tables;
+>  describe tables;
+
+-- create a new table
+-- create table student (id integer primary key, name varchar(20), marks float);
+> create table student (id int primary key, name text, marks float);
+
+
+-- describe the table details
+> describe student;
+
+-- insert a row in the table (2, 'ashish', 88) ,(3, 'amit', 48)
+-- insert into student values (1, 'Ganesh', 90);
+> insert into student (id,name,marks) values (1,'Ganesh',90);
+> insert into student (id,name,marks) values (2, 'ashish', 88);
+> insert into student (id,name,marks) values (3, 'amit', 48);
+
+
+-- select all records
+-- select * from student;
+> select * from student;
+
+
+
+-- show details of a student having id 2
+-- select * from student where id = 2;
+-- filtering on the indexed column (since id is a primary key a default index gets created on the id column)
+> select * from student where id = 2;
+
+
+
+
+
+
+
+
+-- show the details of a student named 'ashish'
+-- select * from student where name = 'ashish';
+
+> select * from student where name = 'ashish' allow filtering;
+
+Filtering on the non-indexed will raise an error [InvalidRequest] with error code 2200
+doing so the you will get unpredictable performance
+
+
+-- show students having marks > 60
+-- select * from student where marks > 60
+> select * from student where marks > 60 allow filtering;
+
+
+
+
+### indexing a column
+
+-- create an index on name column
+-- create index on student (name);
+> create index on student (name);
+
+
+
+-- show the table details
+> describe table student;
+
+index name => student_name_idx
+
+
+-- drop the index
+-- drop index <index name>;
+> drop index student_name_idx;
+
+
+
+### update operation
+-- update marks of student having id = 1
+-- update student set marks = 95 where id = 1;
+> update student set marks = 95 where id = 1;
+
+-- get updated details
+> select * from student;
+
+
+
+### delete operation
+- if deleting multiple records, cassandra treats the operations as 
+multiple write operations (multiple entries will be created in the commit logs)
+- individual delete operations are always slower
+- it is recommended that you should delete entire partition or the whole table at 
+once for better performance (if possible)
+
+-- delete student having id = 1
+-- delete from student where id = 1;
+> delete from student where id = 1;
+
+
+-- get remaining student details
+> select * from student;
+
+
+
+-- delete all records from student table
+-- truncate student;
+> truncate student;
+
+-- delete the whole table
+-- drop table student;
+> drop table student;
+
+
+
+### more examples
+
+```sql
+
+-- create a table to store employee information 
+-- employee must have multiple emails
+> create table employee(id int primary key,name text,email set<text>);
+
+
+
+
+
+-- insert employee info having 2 emails 
+(1, 'ashish', {'ashish@gmail.com', 'ashish9898@sunbeaminfo.com'})
+(2, 'emp1', {'emp1@gmail.com', 'emp2@test.com''emp3@test.com'})
+
+> insert into employee (id,name,email) values (1,'ashish', 
+            {'ashish@gmail.com', 'ashish9898@sunbeaminfo.com'})
+> insert into employee (id,name,email) values (2,'emp1',{'emp1@gmail.com', 'emp2@test.com','emp3@test.com'});
+            
+>insert into employee (id,name,email) values (2,'emp2',{'xyz@gmail.com', 'abc@test.com','emp3@test.com'});
+ 
+-- get all employees
+>
+
+-- add a new column name department
+-- employee may belong to multiple departments
+> alter table employee add departments list<text>;
+
+
+-- set the department for 1st employee 
+['ADMIN', 'HR'] where id = 1
+['QA', 'OPS'] where id = 2;
+> update employee set departments = ['ADMIN', 'HR'] where id = 1;
+> update employee set departments = ['QA', 'OPS'] where id=2;
+
+
+
+
+-- add a column name phone_numbers with structure {type: phone_number}
+> alter table employee add phone_numbers map<text,text>;
+
+-- update phone numbers 
+{ 'home': '21345545', 'office': '2423424' } where id = 1;
+{ 'home': '2536985', 'office': '89974546' } where id = 2;
+>update employee set phone_numbers={'home': '21345545', 'office': '2423424','alternete':'8788987'} where id = 1;
+>update employee set phone_numbers={'home': '21345545'} where id = 2;
+
+
+
+
+
+
+
+
+
+
+
+=======================================================
+```bash
+#### start Redis CLI
+CMD > redis-cli
+
+ping to redis CLI
+> 
+
+#### show info
+> 
+
+# set values with respective keys => user_name as "Ajit"  
+and set user_address as "pune"
+> set user_name "Ajit"
+> set user_address "Pune"
+
+# get all keys
+> keys *
+
+
+
+
+
+
+# get a value of a required key like user_name
+> get user_name
+
+
+# delete a key user_name
+> del user_name
+
+
+
+# delete all keys
+> flushall
+
+
+### hashes
+
+# set key-value pairs for a hash for user 
+ajit username=ajit , address = pune 
+email=ajit@test.com
+> hset user:ajit username ajit address pune email ajit@test.com
+
+
+# get all details of the required object 
+[user:ajit]
+> hgetall user:ajit
+
+
+# get required details of a hash 
+of username of user:ajit 
+> hget user:ajit username
+
+# delete a username  from user:ajit
+> hdel user:ajit username
+
+# delete a hash of user:ajit
+> del user:ajit
+
+
+### lists
+
+- ordered collection of values
+- allows duplicate values
+
+# create a list of colors
+> lpush colors red
+
+# add a value green from left side (head=addfirst)-
+> lpush colors green
+
+# add a value black from right side (tail=addlast)
+> rpush colors black
+
+# get all the values by range 0 to 2
+> lrange colors 0 2
+
+# add following values in a list
+# user1, user2, user3, user4, user5
+> rpush user user1, user2, user3, user4, user5
+
+>lrange user 0 10
+
+
+# delete a value from a list
+# lpop (delfirst)
+> lpop user
+>lrange user 0 10
+>lpop user
+>lrange user 0 10
+
+# rpop (dellast)
+> rpop user
+>lrange users 0 4
+
+
+
+### set
+
+- unordered collection of unique values
+- does not allow duplicate values
+
+```bash
+
+# create a set of fruits by adding following values Oranges ,Papaya, Pineapple, apple, Coconut, apple
+# though we are adding apple multiple times, still it will get stored only once in the set
+# as the set in redis is a collection of unique values
+> sadd  fruits Oranges Papaya Pineapple apple Coconut apple
+
+smembers fruits# add a value Cherry in the existing set
+> sadd fruits Cherry
+
+# get all the members from fruits set
+> smembers fruits
+
+
+
+# check if value Papaya exists in the set fruits
+# the result is 1
+> sismember fruits Papaya
+
+# check if value Grapes exists in the set fruits
+# the result is 0
+> sismember fruits Grapes
+
+# delete Pineapple from fruits
+> srem fruits Pineapple
+
+# delete multiple values Papaya and Coconut from a set
+> srem fruits Papaya Coconut
+
+### sorted set
+
+- collection of unique values
+- the values are sorted by the scores
+
+# create a sorted set as countries with value japan having score=0
+# zadd key <score> <value> 
+> zadd countries 0 japan
+
+
+# add a new value india with score 1 which will 
+be placed after Japan
+> zadd countries 1 india
+
+
+# get the values from sorted set by range from 0 to 2
+> zrange countries 0  4
+
+
+#add a new value 1 afghanistan and 0 mauritius
+>zadd countries 1 afghanistan
+>zadd countries 0 mauritius
+
+
+
+
+
+
+### publish-subscribe
+
+# start listening on a channel / subscribe to a channel
+> subscribe channel-1
+
+# publish a message on a selected channel
+> publish channel-1 "this is a text message"
+==============================================
+### transactions
+
+# start transaction 
+user_name=ajit 
+user_address=pune 
+# execute all these commands sequentially
+
+multi
+set user_name ajit
+set user_address pune 
+exec
+
+
+
+# start transaction
+# discard in between
+multi
+set user_phoneNU 87877655
+discard
+
+
+
+
+
+
+
+### pipeline
+# send multiple commands to the redis server on port 6379
+# \r\n is a new line character used to terminate a command
+exit from radis CMD
+> exit
+> echo -en "ping\r\n set mobile_model S3 \r\n set mobile_price 20000\r\n"
+   | nc localhost 6379
+
+
+
+
+

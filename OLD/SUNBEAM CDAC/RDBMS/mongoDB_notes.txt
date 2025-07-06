@@ -1,0 +1,505 @@
+#MongoDB is an open-source document database that provides high performance, high availability, and automatic scaling.
+
+In simple words, you can say that - Mongo DB is a document-oriented database. It is an open source product, developed and supported by a company named 10gen.
+
+The primary purpose of building MongoDB is:
+AD
+
+-Scalability
+-Performance
+-High Availability
+-Scaling from single server deployments to large, complex multi-site architectures.
+-Key points of MongoDB
+-Develop Faster
+-Deploy Easier
+-Scale Bigger
+
+
+
+# MongoDB is a document database. It stores data in a type of JSON format called BSON.
+
+# A record in MongoDB is a document, which is a data structure composed of key value pairs similar to the structure of JSON objects.
+
+# Records in a MongoDB database are called documents, and the field values may include numbers, strings, booleans, arrays, or even nested documents.
+
+# MongoDB 😇️is a document database and can be 😇️installed locally or hosted in the cloud.
+
+# SQL vs Document Databases
+SQL databases are considered relational databases. They store related data in separate tables. When data is needed, it is queried from multiple tables to join the data back together.
+
+MongoDB is a document database which is often referred to as a non-relational database. This does not mean that relational data cannot be stored in document databases. It means that relational data is stored differently. A better way to refer to it is as a 😇️non-tabular database.
+
+MongoDB stores data in 😇️flexible documents. Instead of having multiple tables you can simply keep all of your related data together. This makes reading your data very fast.
+
+You can still have multiple groups of data too. In MongoDB, instead of tables these are called collections.
+
+
+# MongoDB Query API
+The MongoDB Query API is the way you will interact with your data.
+
+The MongoDB Query API can be used two ways:
+
+CRUD Operations
+Aggregation Pipelines
+MongoDB Query API Uses
+You can use the MongoDB Query API to perform:
+
+Adhoc queries with mongosh, Compass, VS Code, or a MongoDB driver for the programming language you use.
+😇️Data transformations using aggregation pipelines.
+Document join support to combine data from different collections.
+😇️Graph and geospatial queries.
+😇️Full-text search.
+😇️Indexing to improve MongoDB query performance.
+Time series analysis.
+
+
+
+
+# In MongoDB, a database is not actually created until it gets content!
+
+# what is sharding in sql?
+The word “Shard” means “a small part of a whole“. Hence Sharding means dividing a larger part into smaller parts. In DBMS, Sharding is a type of DataBase partitioning in which a large database is divided or partitioned into smaller data and different nodes.(FOR HORIZONTAL SCALING i.e DIVDING LARGE AMOUINT OF DATA ON MULTIPLE)
+
+-Need for Sharding:
+ Consider a very large database whose sharding has not been done. For example, let’s take a DataBase of a college in which all the student’s records (present and past) in the whole college are maintained in a single database. So, it would contain a very very large number of data, say 100, 000 records. Now when we need to find a student from this Database, each time around 100, 000 transactions have to be done to find the student, which is very very costly. Now consider the same college students records, divided into smaller data shards based on years. Now each data shard will have around 1000-5000 students records only. 😇️So not only the database became much more manageable, but also the transaction cost each time also reduces by a huge factor, which is achieved by Sharding. Hence this is why Sharding is needed. 
+
+-Features of Sharding:
+
+Sharding makes the Database smaller
+Sharding makes the Database faster
+Sharding makes the Database much more easily manageable
+Sharding can be a complex operation sometimes
+Sharding reduces the transaction cost of the Database
+😇️Each shard reads and writes its own data.
+Many NoSQL databases offer auto-sharding.
+Failure of one shard doesn’t effect the data processing of other shards 
+
+Use Cases:😇️
+
+Large-scale applications like social media platforms, online retailers, and any system requiring high throughput and low latency.
+
+-😇️MongoDB supports Master Slave replication.
+
+😇️A master can perform Reads and Writes and a Slave copies data from the master and can only be used for reads or back up (not writes)
+
+- Load balancing
+
+It has an automatic load balancing configuration because of data placed in shards.
+-8. It is a schema-less database written in C++.
+-JSON data model with dynamic schemas
+😇️Auto-sharding for horizontal scalability
+😇️Built in replication for high availability
+
+-A Relational database has a typical schema design that shows number of tables and the relationship between these tables, while in 😇️MongoDB there is no concept of relationship.
+
+# advantages of MongDB over RDBMS:
+  -It uses internal memory for storing working sets and this is the reason of its fast access.
+  -There are no complex joins in MongoDB.
+
+  -It uses internal memory for storing working sets and this is the reason of its fast access.
+
+  -MongoDB is schema less. It is a document database in which one collection holds different documents.
+  -MongoDB is almost 100 times faster than traditional database systems.
+  
+  # DATA TYPES IN MONGODB
+
+-String:String is the most commonly used datatype. It is used to store data. A string must be UTF 8 valid in mongodb.
+
+Integer:
+	
+Boolean:
+	
+Double:	
+
+Min/Max Keys:This datatype compare a value against the lowest and highest bson elements.
+
+Arrays:	This datatype is used to store a list or multiple values into a single key.
+
+Object:😇️	Object datatype is used for embedded documents.
+
+Null:😇️It is used to store null values.
+
+Symbol:	It is generally used for languages that use a specific type.
+
+Date:This datatype stores the current date or time in unix time format. It makes you possible to specify your own date time by creating object of date and pass the value of date, month, year into it.
+  
+# 😇️you can create collection in mongoDB manually by "db.createCollection()" but not the database.(LIKE IN SQL)
+
+#
+The table below presents the various SQL terminology and concepts, which are similar to MongoDB terminology and concepts.
+
+SQL Terms😇️		😇️MongoDB Terms
+database		Database
+table	        	Collection
+row	        	document or BSON document
+column			field
+index			index
+table joins		$lookup, embedded document
+primary key		primary key
+
+aggregation		aggregation pipeline
+SELECT INTO NEW_TABLE	$out😇️
+MERGE INTO TABLE	$merge
+transactions		transactions
+
+-In SQL, we can specify any unique column or column combination as the primary key.
+
+
+-In 😇️MongoDB, we don't need to set the primary key. The _id field is automatically set to the primary key.
+
+#### 😇️ Text Index 😇️ ####
+-In MongoDB we have text indexes to support text search     queries   on string content. The field that have any string  value or an array of string elements may include by text indexes
+
+-We must have a text index in our collection to perform text search queries.
+ 
+-😇️In a table/collection, we can have only one text search index. But multiple fields can be covered by a single index.😇️
+- $text Operator
+We can use the 😇️$text operator to perform text searches on a table with a text index. The $text operator will flag the search string which uses the whitespaces and also most of the punctuation as delimiters. The $text operator performs a logical OR operation for all such tokens in the search string.
+
+-We can run the following example in Mongo shell to allow text search cover the name and description fields:
+
+
+////////MongoDB Query API////////
+
+-The MongoDB Query API refers to the set of commands and methods provided by MongoDB for interacting with and manipulating the data stored in a MongoDB database. MongoDB is a NoSQL database that stores data in flexible, JSON-like documents. The Query API allows developers to perform various operations on the data, such as creating, reading, updating, and deleting documents, as well as more complex operations like aggregations and indexing
+
+#
+😇️Bulk Write Operations😇️
+Overview
+
+MongoDB provides clients the ability to perform write operations in bulk. 😇️Bulk write operations affect a single collection. MongoDB allows applications to determine the acceptable level of acknowledgment required for bulk write operations.
+
+The db.collection.bulkWrite() method provides the ability to perform bulk insert, update, and delete operations.
+
+MongoDB also supports bulk insert through the db.collection.insertMany() method.
+
+😇️Ordered Vs Unordered Operations😇️
+
+Bulk write operations can be either ordered or unordered.
+
+With an ordered list of operations, MongoDB executes the operations serially. If an error occurs during the processing of one of the write operations, MongoDB will return without processing any remaining write operations in the list. See ordered Bulk Write
+
+With an unordered list of operations, MongoDB can execute the operations in parallel, but this behavior is not guaranteed. If an error occurs during the processing of one of the write operations, MongoDB will continue to process remaining write operations in the list. See Unordered Bulk Write Example.
+
+Executing an ordered list of operations on a sharded collection will generally be slower than executing an unordered list since with an ordered list, each operation must wait for the previous operation to finish.
+
+By 😇️default, bulkWrite() performs ordered operations. To specify unordered write operations, set ordered : false in the options document.
+
+See Execution of Operations
+
+bulkWrite() Methods
+bulkWrite() supports the following write operations:
+
+-insertOne
+
+-updateOne
+
+-updateMany
+
+-replaceOne
+
+-deleteOne
+
+-deleteMany
+
+Each write operation is passed to bulkWrite() as a document in an array.
+
+# ---MongoDB Query API---
+
+The MongoDB Query API is the mechanism that you use to interact with your data.
+
+The Query API comprises two ways to query data in MongoDB:
+
+1)CRUD Operations
+
+2)Aggregation pipelines
+
+You can use the Query API to perform:
+
+-Adhoc queries: Explore your MongoDB data with mongosh,    Compass , VSCode or a MongoDB driver.
+
+-Data transformations: 😇️Use aggregation pipelines to reshape your data and perform calculations.
+
+-Document join support: 😇️Use $lookup and $unionWith to combine data from different collections.
+
+-Graph and geospatial queries: 😇️Use operators such as $geoWithin and $geoNear to analyze geospatial data and $graphLookup for graph data.
+
+-Full-text search: Use the $search stage to perform efficient text search on your data.
+
+-Indexing: Improve your MongoDB query performance by using the correct index type for your data architecture.
+
+-On-demand materialized views:😇️ Use $out and $merge to create materialized views on common queries.
+
+-Time series analysis: Query and aggregate your time-stamped data with time series collections.
+
+## AD-hoc queries
+Ad hoc queries are database queries that are created spontaneously or on-the-fly to retrieve specific information as needed, rather than being predefined or routinely executed. These queries are often used to answer specific, immediate questions or to generate custom reports.
+
+eg:
+Question: "How many products were sold in the last month to customers in New York?"
+--> ad-hoc query for above
+
+SELECT COUNT(*) 
+FROM sales 
+WHERE sale_date >= '2024-05-01' AND sale_date < '2024-06-01' 
+  AND customer_location = 'New York';
+
+#
+Note: You cannot use both 0 and 1 in the same object. The only exception is the _id field. You should either specify the fields you would like to include or the fields you would like to exclude.
+eg.-db.posts.find({}, {_id: 0, title: 1, date: 1})
+
+Note:We will get an error if we try to specify both 0 and 1 in the same object.
+eg.-db.posts.find({}, {title: 1, date: 0})
+
+# MongoDB Query Operators😇️
+There are many query operators that can be used to compare and reference document fields.
+
+Comparison:
+The following operators can be used in queries to compare values:
+
+$eq: Values are equal
+$ne: Values are not equal
+$gt: Value is greater than another value
+$gte: Value is greater than or equal to another value
+$lt: Value is less than another value
+$lte: Value is less than or equal to another value
+$in: Value is matched within an array😅️
+
+Logical:
+The following operators can logically compare multiple queries.
+
+$and: Returns documents where both queries match
+$or: Returns documents where either query matches
+$nor: Returns documents where both queries fail to match🤩️
+$not: Returns documents where the query does not match😇️
+
+Evaluation:
+The following operators assist in evaluating documents.
+
+$regex: Allows the use of regular expressions when evaluating field values
+$text: Performs a text search
+$where: Uses a JavaScript expression to match documents
+
+#Transition to mongosh:
+
+Legacy Shell (mongo)😇️: The older interactive shell used up until MongoDB version 4.x.
+New Shell (mongosh)😇️: The newer shell introduced in MongoDB 5.0, offering improved features and better integration with modern JavaScript.
+In summary, mongosh is the current interactive shell for MongoDB, providing a powerful and flexible interface for database management and interaction.
+
+# WHAT IS PROJECTION IN MONGODB?
+-In MongoDB, projection is a way to specify or restrict which fields to include or exclude in the documents returned by a query.
+-The projection is defined as the second argument to the find() method. It is an object where the keys are the field names and the values are either 1 (to include) or 0 (to exclude).
+-Generally, you should not mix inclusion and exclusion in the same projection (except for the _id field). MongoDB will throw an error if you do.
+However, you can exclude the _id field while including other fields
+
+# PROJECTION WITH EMBEDDED DOCUMENT
+
+# secondary indexes
+# map reduce in mongodb
+# cursor.explain
+# rollback in mongodb
+#MONGODB-CR
+# SERVICE PRINCIPLE IN MONGO
+# VIEW ROLE IN MONGO
+# DATA STRUCTURE IN MONGODB CURRENT QUEUE
+# GLOBALLOCK.ACTIVECLIENTS
+#CHANGEANYPASSWORD ACTION
+
+# cursor in mongoDB:
+In MongoDB, a cursor is a mechanism that allows you to iterate over the results of a query. When you perform a query using methods like find(), 😇️MongoDB returns a cursor object rather than the actual documents. 😇️This cursor can then be used to retrieve documents one at a time or in batches, making it efficient for handling large datasets.
+
+Key Features of Cursors in MongoDB:
+
+Lazy Evaluation:😇️
+Cursors fetch data from the server in batches as you iterate through the results, rather than loading the entire result set into memory at once.
+
+
+Methods for Iteration and Access:
+
+next(): Retrieves the next document in the cursor.
+hasNext(): Checks if there are more documents in the cursor.
+toArray(): Converts the cursor to an array of documents.
+forEach(): Iterates over the cursor and applies a function to each document.
+map(): Applies a function to each document in the cursor and returns an array of the results.
+
+
+Query Modifiers:
+
+limit(): Limits the number of documents returned.
+skip(): Skips a specified number of documents.
+sort(): Sorts the documents based on specified fields.
+projection(): Specifies which fields to include or exclude.
+Batch Size Control:
+
+batchSize(): Specifies the number of documents to return in each batch.
+
+Advantages of Using Cursors:
+
+Memory Efficiency:
+By retrieving documents in batches, cursors prevent excessive memory usage when dealing with large result sets.
+
+
+Network Efficiency:
+Reduces the amount of data sent over the network in a single request by fetching results in manageable chunks.
+
+Flexibility:
+Allows for various operations to be performed on the result set, such as sorting, limiting, skipping, and transforming documents.
+Considerations:
+Cursor Timeout:
+
+By default, cursors in MongoDB time out after 😇️10 minutes of inactivity. This can be configured with the 😇️noCursorTimeout option.
+
+Resource Usage:
+While cursors are efficient, keeping them open for extended periods can consume server resources. 😇️It’s important to process and close cursors promptly.
+
+Summary:
+A cursor in MongoDB is a powerful tool for efficiently iterating over query results. It supports lazy evaluation, various iteration methods, and query modifiers, making it flexible and efficient for handling large datasets. By understanding and utilizing cursors effectively, you can optimize the performance and resource usage of your MongoDB applications.
+
+### update / upsert / modify
+
+- the document exists and you are suppose to update it
+- update() will update the entire object
+- update() will add the attribute/property if it does not exist
+- syntax
+  - update(<criteria>, <newValues>, <upsert>, <multiple>)
+  - where
+    - criteria: used to select the matching document(s)
+    - newValues: new values you want to update the document with
+    - upsert:
+      - used to insert a new document if it does not exist
+      - if the document exists, update it but if it does not exist then create new document
+      - by default, it is set to false
+    - multiple:
+      - used to update the multiple documents
+      - by default, it is set to false
+      
+      
+      
+## use of mapReduce in MOngoDB? how its differnt fom aggregation in SQL?
+
+
+##
+n a MySQL setup, the server and client are distinct components, each with their own specific names and roles.
+
+MySQL Server:
+Name: mysqld
+Description: The MySQL server, known as mysqld, is the core program that manages the databases, handles queries, and performs all the necessary database operations. It listens for incoming connections from MySQL clients and responds to their requests.
+
+MySQL Client:
+Name: mysql
+Description: The MySQL client, simply called mysql, is a command-line program that allows users to interact with the MySQL server. It is used to execute SQL commands, manage databases, and perform administrative tasks.
+
+
+Additional MySQL Client Tools:
+
+Aside from the basic mysql client, there are several other tools that can be used to interact with the MySQL server:
+
+mysqladmin: A command-line tool for performing administrative operations.
+mysqldump: A utility for creating backups by dumping a database or a collection of databases into SQL format.
+mysqlimport: A tool for importing data into MySQL tables from text files.
+mysqlshow: Displays database, table, and column information.
+mysqlcheck: A maintenance tool for checking, repairing, optimizing, and analyzing tables.
+
+# diffference betwwn columnary vs row storage:adavantages and disadvantage?
+
+# what to do ypu mean by element mapping in sql? methods to visualize joins?
+
+#
+Sure, let's go through the other options:
+
+a) **Log**: MongoDB log files are typically stored in a different directory, not `/var/lib/mongo`. By default, MongoDB writes its log files to `/var/log/mongodb/mongod.log`. This log file contains information about the operations and status of the MongoDB server.
+
+c) **Replica**:😇️ In MongoDB, a replica set is a group of mongod instances that maintain the same data set, providing redundancy and high availability. The data for each replica member is stored in `/var/lib/mongo`😇️, just like the primary instance's data. However, the term "replica" specifically refers to the replication mechanism rather than a file type stored in the directory.
+
+d) **All of the mentioned**: This option is incorrect because MongoDB's default data directory `/var/lib/mongo` does not store log files. It stores data files, which may include the data of replica set members if the instance is part of a replica set. Therefore, saying "All of the mentioned" would be incorrect because log files are stored elsewhere.
+
+To summarize:
+
+- **Data** files are stored in `/var/lib/mongo`.😇️
+- **Log** files are stored in `/var/log/mongodb/mongod.log`.😇️
+- **Replica** refers to the replication mechanism, and the data for replicas is stored in the same directory as other data, but "replica" is not a file type stored there.
+
+
+----------------------------------------------------------------
+Storage Area Network (SAN)
+SAN is a high-speed network that provides access to consolidated block-level storage. SANs are used to enhance storage devices' accessibility to servers, making storage devices appear as locally attached to the operating system
+
+----------------------------------------------------------------
+Hbase vs cassandra:
+
+-It is based on Master-Slave Architecture Model.
+-HBase is based on Google BigTable.	
+-HBase does not support ordered partitioning.
+-The cluster’s accessibility depends on the availability of the Master node.		
+-HBase provides more consistency.	
+-Triggers are supported because of Coprocessor capability.
+-HBase supports automatic rebalancing within clusters.		
+-HBase provides two methods for handling the transactions- 
+     >>‘Check and Put’ 
+     >>‘Read-Check-Delete’ 
+-HBase works on CP (Consistency, Partition Tolerance) Model.
+-for internal node communication, HBase uses the Zookeeper protocol	
+-HBase is good at intensive reads.	
+-HBase permits access at the cell level.
+-The HBase query language is a custom-based language that must be learned. 	
+
+cassandra:
+
+-It is based on Active-Active Node Architecture Model.
+-Cassandra is based on Amazon DynamoDB.
+-Cassandra allows for ordered partitioning.
+-All nodes are equal so no such SPoF exists.
+-It does not provide as much consistency as HBase provides.
+-It does not provide as much consistency as HBase provides.
+-Triggers are not supported.
+-For internal node communication, Cassandra uses the Gossip protocol
+-Cassandra has its own CQL (Cassandra Query Language), which is in line with SQL language.
+-Cassandra provides two methods for handling the transactions-
+     
+      >>‘Compare and Set’
+
+      >>‘Row-level Write Isolation’
+-Cassandra works on the AP (Availability, Partition Tolerance. ) Model.
+-Cassandra supports access at the row level
+-Cassandra is good at writing. 
+
+
+----------------------------------------------------------------
+mongodb architecture:
+
+1. Drivers & Storage Engine
+
+
+-Drivers
+Drivers are client libraries that offer interfaces and methods for applications to communicate with MongoDB databases. Drivers will handle the translation of documents between BSON objects and mapping application structures.
+.NET, Java, JavaScript, Node.js, Python, etc are some of the widely used drives supported by MongoDB.
+
+
+-Storage Engine
+The storage engine significantly influences the performance of applications, serving as an intermediary between the MongoDB database and persistent storage, typically disks. MongoDB supports different storage engines:
+ 
+  >>MMAPv1 – It is a traditional storage engine based on memory   mapped files. This storage engine is optimized for workloads with high volumes of read operations, insertions, and in-place updates. It uses B-tress to store indexes. Storage Engine works on multiple reader single writer lock. A user cannot have two write calls to be processes in parallel on the same collection. It is fast for reads and slow for writes
+ 
+  >Wired Tiger – Default Storage Engine starts from MongoDB 3version. No locking Algorithms like hash pointer. It yields 7x-10x better write operations and 80% of the file system compression than MMAP.
+  
+  >InMemory – Instead of storing documents on disk, the engine uses in-memory for more predictable data latencies. It uses 50% of physical RAM minimum 1 GB as default. It requires all its data. When dealing with large datasets, the in-memory engine may not be the most suitable choice.
+
+2. Security
+
+-Authentication
+-Authorization
+-Encryption on data
+-Hardening (Ensure only trusted hosts have access)
+
+3. MongoDB Server
+It serves as the central element and is in charge of maintaining, storing, and retrieving data from the database through a number of interfaces. The system’s heart is the MongoDB server. Each mongod server instance is in charge of handling client requests, maintaining data storage, and performing database operations. Several mongod instances work together to form a cluster in a typical MongoDB setup.
+
+4. MongoDB Shell
+For dealing with MongoDB databases, MongoDB provides the MongoDB Shell command-line interface (CLI) tool. The ability to handle and query MongoDB data straight from the terminal is robust and flexible. After installing MongoDB, you may access the MongoDB Shell, often known as mongo. It interacts with the database using JavaScript-based syntax. Additionally, it has built-in help that shows details about possible commands and how to use them.
+
+.4 Hashed
+To maintain the entries with hashes of the values of the indexed field we use Hash Index. MongoDB supports hash based sharding and provides hashed indexes.
+
+-----------------------------------------------------------------
+😇️MongoDB stores time in **UTC (Coordinated Universal Time)** by default. When you store dates and times in MongoDB, it uses the `ISODate` format, which includes the date, time, and time zone information set to UTC. This ensures consistency and avoids issues related to time zone differences when data is accessed or manipulated across different regions.
+

@@ -1,0 +1,55 @@
+Q.1 Xyz company -- Salary Processing System
+============================================
+1. Labors -- salary = payment hours * rate
+2. Managers -- salary + bonus
+3. Salesmans -- salary + comm
+4. Clerks -- salary
+5. Many employees -- Get total sal expense
+
+class Person {
+    // fields: name, age
+    // methods: ctors, getter/setter, accept(), display()
+}
+
+class Emp : Person {
+    // fields: id, salary,
+    // methods: ctors, getter/setter, accept(), display(),
+    //  virtual calcSal()
+}
+
+class Labor : Emp {
+    // fields: hours, rate
+    // methods: ctors, getter/setter, accept(), display(), 
+    //  override calcSal()
+}
+
+class Manager : Emp {
+    // fields: bonus
+    // methods: ctors, getter/setter, accept(), display()
+    //  override calcSal()
+}
+
+class Salesman : Emp {
+    // fields: comm
+    // methods: ctors, getter/setter, accept(), display()
+    //  override calcSal()
+}
+
+class Clerk : Emp {
+    // fields: 
+    // methods: ctors, getter/setter, accept(), display()
+}
+
+
+Q.2 Write a stucture Student with following members: 
+string name;	
+bool gender;	
+int age;
+int std;	
+char div;	
+double marks; 
+
+Provide following functionality:
+Default constructor(?) Parameterized constructor Get and Set methods
+AcceptDetails() method to accept data from console. PrintDetails() method to print data to console.
+Check the default access specifier for members of structure. Keep all data members private and all member functions public.

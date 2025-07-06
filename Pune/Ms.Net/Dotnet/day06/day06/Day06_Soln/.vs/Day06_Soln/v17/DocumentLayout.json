@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{32906F57-4653-4885-97DA-170B29FB7A59}|08_Reflection\\08_Reflection.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day06_soln\\08_reflection\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32906F57-4653-4885-97DA-170B29FB7A59}|08_Reflection\\08_Reflection.csproj|solutionrelative:08_reflection\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{918B3929-F499-4851-AD25-077DC6A9054F}|MyMath\\MyMath.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day06_soln\\mymath\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{918B3929-F499-4851-AD25-077DC6A9054F}|MyMath\\MyMath.csproj|solutionrelative:mymath\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86AB1425-0777-4093-99A5-169FB00CB798}|07_Dynamic\\07_Dynamic.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day06_soln\\07_dynamic\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86AB1425-0777-4093-99A5-169FB00CB798}|07_Dynamic\\07_Dynamic.csproj|solutionrelative:07_dynamic\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{307E3430-42D3-42DE-9872-0F5D32411B11}|01_Serialization\\01_Serialization.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day06_soln\\01_serialization\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{307E3430-42D3-42DE-9872-0F5D32411B11}|01_Serialization\\01_Serialization.csproj|solutionrelative:01_serialization\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0565A4-884E-4825-96F9-C830E76D309D}|02_ExceptionIndexerIterators\\02_ExceptionIndexerIterators.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day06_soln\\02_exceptionindexeriterators\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0565A4-884E-4825-96F9-C830E76D309D}|02_ExceptionIndexerIterators\\02_ExceptionIndexerIterators.csproj|solutionrelative:02_exceptionindexeriterators\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69725AE0-FA3A-4991-9772-C50D537DEC30}|04_Interfaces\\04_Interfaces.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day06_soln\\04_interfaces\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69725AE0-FA3A-4991-9772-C50D537DEC30}|04_Interfaces\\04_Interfaces.csproj|solutionrelative:04_interfaces\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9C9CC91-1375-4F7E-9900-68F96B342308}|03_GcResourceManagement\\03_GcResourceManagement.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day06_soln\\03_gcresourcemanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9C9CC91-1375-4F7E-9900-68F96B342308}|03_GcResourceManagement\\03_GcResourceManagement.csproj|solutionrelative:03_gcresourcemanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\08_Reflection\\Program.cs",
+              "RelativeDocumentMoniker": "08_Reflection\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\08_Reflection\\Program.cs",
+              "RelativeToolTip": "08_Reflection\\Program.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAuwFYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T07:42:47.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\MyMath\\Class1.cs",
+              "RelativeDocumentMoniker": "MyMath\\Class1.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\MyMath\\Class1.cs",
+              "RelativeToolTip": "MyMath\\Class1.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAA3wAQAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T07:40:21.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\07_Dynamic\\Program.cs",
+              "RelativeDocumentMoniker": "07_Dynamic\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\07_Dynamic\\Program.cs",
+              "RelativeToolTip": "07_Dynamic\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAuwDUAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T07:07:57.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\04_Interfaces\\Program.cs",
+              "RelativeDocumentMoniker": "04_Interfaces\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\04_Interfaces\\Program.cs",
+              "RelativeToolTip": "04_Interfaces\\Program.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAD4vzwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T06:43:45.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\03_GcResourceManagement\\Program.cs",
+              "RelativeDocumentMoniker": "03_GcResourceManagement\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\03_GcResourceManagement\\Program.cs",
+              "RelativeToolTip": "03_GcResourceManagement\\Program.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAcwBQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T05:52:49.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\02_ExceptionIndexerIterators\\Program.cs",
+              "RelativeDocumentMoniker": "02_ExceptionIndexerIterators\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\02_ExceptionIndexerIterators\\Program.cs",
+              "RelativeToolTip": "02_ExceptionIndexerIterators\\Program.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAA8wE8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T03:47:09.097Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\01_Serialization\\Program.cs",
+              "RelativeDocumentMoniker": "01_Serialization\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\Day06_Soln\\01_Serialization\\Program.cs",
+              "RelativeToolTip": "01_Serialization\\Program.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAuwI4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T02:53:38.769Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

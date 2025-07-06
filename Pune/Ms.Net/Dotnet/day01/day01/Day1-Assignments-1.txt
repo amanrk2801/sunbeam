@@ -1,0 +1,15 @@
+1. Write Simple Hello World program using C#.
+
+2. Create a basic four-function calculator. Take two numbers input from command line along with the operation to be performed. Use switch case.
+
+3. Write a Class Student with following members: 
+string name;	
+bool gender;	
+int age;
+int std;	
+char div;	
+double marks; 
+Provide following functionality:
+Default constructor(?) Parameterized constructor Get and Set methods
+AcceptDetails() method to accept data from console. PrintDetails() method to print data to console.
+Check the default access specifier for members of structure. Keep all data members private and all member functions public.

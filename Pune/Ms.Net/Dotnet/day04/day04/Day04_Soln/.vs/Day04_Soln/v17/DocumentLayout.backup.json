@@ -1,0 +1,155 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{923943C0-74B1-442B-81AC-9CD604B8352F}|08_GenericCollections\\08_GenericCollections.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day04\\day04_soln\\08_genericcollections\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{923943C0-74B1-442B-81AC-9CD604B8352F}|08_GenericCollections\\08_GenericCollections.csproj|solutionrelative:08_genericcollections\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0310CA3-969E-47F3-B908-E80ADDAD58B7}|07_LegacyCollections\\07_LegacyCollections.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day04\\day04_soln\\07_legacycollections\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0310CA3-969E-47F3-B908-E80ADDAD58B7}|07_LegacyCollections\\07_LegacyCollections.csproj|solutionrelative:07_legacycollections\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E50438B-A6CB-47F8-86B0-1EADFC8FABBA}|06_Arrays\\06_Arrays.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day04\\day04_soln\\06_arrays\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E50438B-A6CB-47F8-86B0-1EADFC8FABBA}|06_Arrays\\06_Arrays.csproj|solutionrelative:06_arrays\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{360AA910-0FF8-4832-99E7-F688D519D001}|05_GenericDelegates\\05_GenericDelegates.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day04\\day04_soln\\05_genericdelegates\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{360AA910-0FF8-4832-99E7-F688D519D001}|05_GenericDelegates\\05_GenericDelegates.csproj|solutionrelative:05_genericdelegates\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFEACDA9-F89F-4373-88B8-ED37CC8AD37A}|04_ButtonClickEvent\\04_ButtonClickEvent.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day04\\day04_soln\\04_buttonclickevent\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFEACDA9-F89F-4373-88B8-ED37CC8AD37A}|04_ButtonClickEvent\\04_ButtonClickEvent.csproj|solutionrelative:04_buttonclickevent\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFEACDA9-F89F-4373-88B8-ED37CC8AD37A}|04_ButtonClickEvent\\04_ButtonClickEvent.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day04\\day04_soln\\04_buttonclickevent\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AFEACDA9-F89F-4373-88B8-ED37CC8AD37A}|04_ButtonClickEvent\\04_ButtonClickEvent.csproj|solutionrelative:04_buttonclickevent\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C86F43B4-B71E-4C02-B1EF-BE83B449AF14}|02_Events\\02_Events.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day04\\day04_soln\\02_events\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C86F43B4-B71E-4C02-B1EF-BE83B449AF14}|02_Events\\02_Events.csproj|solutionrelative:02_events\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CC3BA07-A332-4E52-9E1E-47ABD2C05894}|01_Delegates\\01_Delegates.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day04\\day04_soln\\01_delegates\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9CC3BA07-A332-4E52-9E1E-47ABD2C05894}|01_Delegates\\01_Delegates.csproj|solutionrelative:01_delegates\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\08_GenericCollections\\Program.cs",
+              "RelativeDocumentMoniker": "08_GenericCollections\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\08_GenericCollections\\Program.cs",
+              "RelativeToolTip": "08_GenericCollections\\Program.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAAC4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T06:03:47.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\07_LegacyCollections\\Program.cs",
+              "RelativeDocumentMoniker": "07_LegacyCollections\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\07_LegacyCollections\\Program.cs",
+              "RelativeToolTip": "07_LegacyCollections\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAA2wCsAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T05:50:19.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\06_Arrays\\Program.cs",
+              "RelativeDocumentMoniker": "06_Arrays\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\06_Arrays\\Program.cs",
+              "RelativeToolTip": "06_Arrays\\Program.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAuwGUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T05:22:48.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\05_GenericDelegates\\Program.cs",
+              "RelativeDocumentMoniker": "05_GenericDelegates\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\05_GenericDelegates\\Program.cs",
+              "RelativeToolTip": "05_GenericDelegates\\Program.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAA2wDYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T04:44:51.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\04_ButtonClickEvent\\Form1.cs",
+              "RelativeDocumentMoniker": "04_ButtonClickEvent\\Form1.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\04_ButtonClickEvent\\Form1.cs",
+              "RelativeToolTip": "04_ButtonClickEvent\\Form1.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T04:15:48.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\04_ButtonClickEvent\\Form1.cs",
+              "RelativeDocumentMoniker": "04_ButtonClickEvent\\Form1.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\04_ButtonClickEvent\\Form1.cs [Design]",
+              "RelativeToolTip": "04_ButtonClickEvent\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T04:13:38.082Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\02_Events\\Program.cs",
+              "RelativeDocumentMoniker": "02_Events\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\02_Events\\Program.cs",
+              "RelativeToolTip": "02_Events\\Program.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAFoAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T03:31:16.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\01_Delegates\\Program.cs",
+              "RelativeDocumentMoniker": "01_Delegates\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day04\\Day04_Soln\\01_Delegates\\Program.cs",
+              "RelativeToolTip": "01_Delegates\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAgwBgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T03:02:04.391Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

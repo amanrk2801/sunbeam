@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{05C05292-2CF0-48CD-8841-080C5C7024DF}|08_OopNew\\08_OopNew.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day02\\day02soln\\08_oopnew\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05C05292-2CF0-48CD-8841-080C5C7024DF}|08_OopNew\\08_OopNew.csproj|solutionrelative:08_oopnew\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AC0AE21-6215-4EA5-9285-FBA99D148BCB}|07_OopInheritance\\07_OopInheritance.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day02\\day02soln\\07_oopinheritance\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AC0AE21-6215-4EA5-9285-FBA99D148BCB}|07_OopInheritance\\07_OopInheritance.csproj|solutionrelative:07_oopinheritance\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AC0AE21-6215-4EA5-9285-FBA99D148BCB}|07_OopInheritance\\07_OopInheritance.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day02\\day02soln\\07_oopinheritance\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AC0AE21-6215-4EA5-9285-FBA99D148BCB}|07_OopInheritance\\07_OopInheritance.csproj|solutionrelative:07_oopinheritance\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5180DD3-DE40-4361-8D58-6536B3083A3B}|06_Methods\\06_Methods.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day02\\day02soln\\06_methods\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5180DD3-DE40-4361-8D58-6536B3083A3B}|06_Methods\\06_Methods.csproj|solutionrelative:06_methods\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE4FDAFD-CE84-4C72-80E1-C69FB5C757A1}|05_Boxing\\05_Boxing.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day02\\day02soln\\05_boxing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE4FDAFD-CE84-4C72-80E1-C69FB5C757A1}|05_Boxing\\05_Boxing.csproj|solutionrelative:05_boxing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA68B1B7-0696-4689-90FD-37F42E55C6AC}|04_StructEnum\\04_StructEnum.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day02\\day02soln\\04_structenum\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA68B1B7-0696-4689-90FD-37F42E55C6AC}|04_StructEnum\\04_StructEnum.csproj|solutionrelative:04_structenum\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C2FD1B-35A4-402E-9DEF-B9F48CE47B7A}|03_DataTypes\\03_DataTypes.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day02\\day02soln\\03_datatypes\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C2FD1B-35A4-402E-9DEF-B9F48CE47B7A}|03_DataTypes\\03_DataTypes.csproj|solutionrelative:03_datatypes\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEF573AE-B5B5-4CBE-9A7C-F433E295C666}|02_Namespaces\\02_Namespaces.csproj|d:\\nilesh\\feb25\\dac\\dotnet\\day02\\day02soln\\02_namespaces\\program2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEF573AE-B5B5-4CBE-9A7C-F433E295C666}|02_Namespaces\\02_Namespaces.csproj|solutionrelative:02_namespaces\\program2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\08_OopNew\\Program.cs",
+              "RelativeDocumentMoniker": "08_OopNew\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\08_OopNew\\Program.cs",
+              "RelativeToolTip": "08_OopNew\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA2wBYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:15:58.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Person.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\07_OopInheritance\\Person.cs",
+              "RelativeDocumentMoniker": "07_OopInheritance\\Person.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\07_OopInheritance\\Person.cs",
+              "RelativeToolTip": "07_OopInheritance\\Person.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAzwBUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T07:24:06.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\07_OopInheritance\\Program.cs",
+              "RelativeDocumentMoniker": "07_OopInheritance\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\07_OopInheritance\\Program.cs",
+              "RelativeToolTip": "07_OopInheritance\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvxIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T07:23:36.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\06_Methods\\Program.cs",
+              "RelativeDocumentMoniker": "06_Methods\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\06_Methods\\Program.cs",
+              "RelativeToolTip": "06_Methods\\Program.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAA1wFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T06:37:41.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\05_Boxing\\Program.cs",
+              "RelativeDocumentMoniker": "05_Boxing\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\05_Boxing\\Program.cs",
+              "RelativeToolTip": "05_Boxing\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAcwCYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T05:47:33.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program2.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\02_Namespaces\\Program2.cs",
+              "RelativeDocumentMoniker": "02_Namespaces\\Program2.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\02_Namespaces\\Program2.cs",
+              "RelativeToolTip": "02_Namespaces\\Program2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T04:27:04.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\04_StructEnum\\Program.cs",
+              "RelativeDocumentMoniker": "04_StructEnum\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\04_StructEnum\\Program.cs",
+              "RelativeToolTip": "04_StructEnum\\Program.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAA3wJUAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T04:02:39.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\03_DataTypes\\Program.cs",
+              "RelativeDocumentMoniker": "03_DataTypes\\Program.cs",
+              "ToolTip": "D:\\Nilesh\\Feb25\\DAC\\dotnet\\day02\\Day02Soln\\03_DataTypes\\Program.cs",
+              "RelativeToolTip": "03_DataTypes\\Program.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAABwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T03:46:04.191Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

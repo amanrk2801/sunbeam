@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36127.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Serialization", "01_Serialization\01_Serialization.csproj", "{307E3430-42D3-42DE-9872-0F5D32411B11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_ExceptionIndexerIterators", "02_ExceptionIndexerIterators\02_ExceptionIndexerIterators.csproj", "{BA0565A4-884E-4825-96F9-C830E76D309D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_GcResourceManagement", "03_GcResourceManagement\03_GcResourceManagement.csproj", "{D9C9CC91-1375-4F7E-9900-68F96B342308}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_Interfaces", "04_Interfaces\04_Interfaces.csproj", "{69725AE0-FA3A-4991-9772-C50D537DEC30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_Dynamic", "07_Dynamic\07_Dynamic.csproj", "{86AB1425-0777-4093-99A5-169FB00CB798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMath", "MyMath\MyMath.csproj", "{918B3929-F499-4851-AD25-077DC6A9054F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_Reflection", "08_Reflection\08_Reflection.csproj", "{32906F57-4653-4885-97DA-170B29FB7A59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{307E3430-42D3-42DE-9872-0F5D32411B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307E3430-42D3-42DE-9872-0F5D32411B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307E3430-42D3-42DE-9872-0F5D32411B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307E3430-42D3-42DE-9872-0F5D32411B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA0565A4-884E-4825-96F9-C830E76D309D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA0565A4-884E-4825-96F9-C830E76D309D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA0565A4-884E-4825-96F9-C830E76D309D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA0565A4-884E-4825-96F9-C830E76D309D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C9CC91-1375-4F7E-9900-68F96B342308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C9CC91-1375-4F7E-9900-68F96B342308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C9CC91-1375-4F7E-9900-68F96B342308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C9CC91-1375-4F7E-9900-68F96B342308}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69725AE0-FA3A-4991-9772-C50D537DEC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69725AE0-FA3A-4991-9772-C50D537DEC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69725AE0-FA3A-4991-9772-C50D537DEC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69725AE0-FA3A-4991-9772-C50D537DEC30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86AB1425-0777-4093-99A5-169FB00CB798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86AB1425-0777-4093-99A5-169FB00CB798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86AB1425-0777-4093-99A5-169FB00CB798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86AB1425-0777-4093-99A5-169FB00CB798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{918B3929-F499-4851-AD25-077DC6A9054F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{918B3929-F499-4851-AD25-077DC6A9054F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{918B3929-F499-4851-AD25-077DC6A9054F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{918B3929-F499-4851-AD25-077DC6A9054F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32906F57-4653-4885-97DA-170B29FB7A59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32906F57-4653-4885-97DA-170B29FB7A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32906F57-4653-4885-97DA-170B29FB7A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32906F57-4653-4885-97DA-170B29FB7A59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A9FC59A-AC8F-44B9-9520-FCC96C0B7DD0}
+	EndGlobalSection
+EndGlobal
